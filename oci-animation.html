@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+  <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"/>
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sovereign Zero Trust Cloud — OCI Live Security Stream</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg:#04080f; --surface:#080f1c; --surface2:#0c1628; --border:#1a2a4a;
+    --blue:#4A90E2; --blue2:#2a5fa8; --cyan:#00d4ff; --green:#00e87a;
+    --orange:#FFA500; --red:#e85a4a; --purple:#9b59b6; --gold:#FFD700;
+    --text:#cce0ff; --muted:#4a7aaa;
+    --font-head:'Syne',sans-serif; --font-body:'IBM Plex Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:var(--font-body);overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,212,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,.018) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0;}
+  body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 20%,rgba(74,144,226,.06) 0%,transparent 70%);pointer-events:none;z-index:0;}
+
+  .page{min-height:100vh;padding:1.5rem 2rem;display:flex;flex-direction:column;gap:1.2rem;position:relative;z-index:1;}
+
+  /* HEADER */
+  .hdr{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;border-bottom:1px solid var(--border);padding-bottom:1rem;}
+  .hdr-l .eye{font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--cyan);margin-bottom:.3rem;}
+  .hdr-l h1{font-family:var(--font-head);font-size:clamp(.95rem,2vw,1.6rem);font-weight:800;line-height:1.1;}
+  .hdr-l h1 em{font-style:normal;color:var(--cyan);}
+  .srow{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;}
+  .si{display:flex;align-items:center;gap:.4rem;font-size:.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;}
+  .sd{width:6px;height:6px;border-radius:50%;}
+  .live{background:var(--green);animation:blink 1.4s infinite;}
+  .warn{background:var(--orange);}
+  @keyframes blink{0%,100%{opacity:1;}50%{opacity:.15;}}
+
+  /* CONTROLS */
+  .ctrl{display:flex;gap:.7rem;align-items:center;flex-wrap:wrap;}
+  .cb{font-family:var(--font-body);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:.42rem .9rem;border-radius:2px;cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--muted);transition:all .2s;}
+  .cb:hover,.cb.active{border-color:var(--cyan);color:var(--cyan);background:rgba(0,212,255,.05);}
+  .cb.primary{background:var(--cyan);color:var(--bg);border-color:var(--cyan);}
+  .cb.primary:hover{background:transparent;color:var(--cyan);}
+  .cb.red{border-color:var(--red);color:var(--red);background:rgba(232,90,74,.07);}
+  .cb.red:hover{background:rgba(232,90,74,.15);}
+
+  /* LAYOUT */
+  .main{display:grid;grid-template-columns:1fr 290px;gap:1.2rem;flex:1;}
+  .viz{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:1.2rem;position:relative;overflow:hidden;}
+  .side{display:flex;flex-direction:column;gap:1rem;}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:1.1rem;}
+  .ct{font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:.8rem;}
+
+  /* PIPE */
+  .pipe{display:flex;flex-direction:column;gap:.32rem;}
+  .ps{display:flex;align-items:center;gap:.6rem;font-size:.6rem;padding:.38rem .5rem;border-radius:3px;border:1px solid transparent;transition:all .25s;color:#1a3a5a;}
+  .ps.active{background:rgba(0,212,255,.07);border-color:rgba(0,212,255,.3);color:var(--cyan);}
+  .ps.done{color:var(--muted);}
+  .pi{width:5px;height:5px;border-radius:50%;flex-shrink:0;background:#1a3a5a;}
+  .ps.active .pi{background:var(--cyan);animation:blink .9s infinite;}
+  .ps.done .pi{background:var(--muted);}
+
+  /* METRICS */
+  .mr{display:flex;justify-content:space-between;align-items:center;padding:.35rem 0;border-bottom:1px solid var(--border);font-size:.62rem;}
+  .mr:last-child{border-bottom:none;}
+  .mv{font-family:var(--font-head);font-size:.82rem;font-weight:700;}
+  .vc{color:var(--cyan);} .vg{color:var(--green);} .vo{color:var(--orange);} .vr{color:var(--red);}
+
+  /* THREAT FEED */
+  .tf{font-size:.58rem;line-height:2;max-height:160px;overflow:hidden;position:relative;}
+  .tf::after{content:'';position:absolute;bottom:0;left:0;right:0;height:32px;background:linear-gradient(transparent,var(--surface));}
+  .te{display:flex;gap:.5rem;animation:fup .3s forwards;}
+  .tt{color:var(--cyan);flex-shrink:0;} .tm{color:var(--text);}
+  .tw{color:var(--orange);} .tok{color:var(--green);} .tr{color:var(--red);}
+  @keyframes fup{from{opacity:0;transform:translateY(3px);}to{opacity:1;transform:translateY(0);}}
+
+  /* THREAT LEVEL */
+  .tl-bar{height:6px;background:var(--surface2);border-radius:3px;overflow:hidden;margin-top:.4rem;}
+  .tl-fill{height:100%;border-radius:3px;transition:width .5s ease;}
+
+  /* BOTTOM */
+  .btm{display:flex;gap:.8rem;flex-wrap:wrap;}
+  .pill{font-size:.56rem;padding:.28rem .7rem;border:1px solid var(--border);border-radius:20px;color:var(--muted);}
+  .pill span{color:var(--text);}
+
+  /* TOOLTIP */
+  #tt-el{position:fixed;background:var(--surface2);border:1px solid var(--cyan);border-radius:4px;padding:.55rem .9rem;font-size:.62rem;pointer-events:none;z-index:999;display:none;max-width:230px;line-height:1.7;}
+  #tt-el strong{color:var(--cyan);font-family:var(--font-head);display:block;margin-bottom:.2rem;}
+
+  #cycle-b{position:absolute;top:.8rem;right:.8rem;font-size:.55rem;color:var(--muted);background:var(--surface2);border:1px solid var(--border);padding:.22rem .55rem;border-radius:2px;z-index:5;}
+
+  @media(max-width:900px){.main{grid-template-columns:1fr;}.side{display:none;}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="hdr">
+    <div class="hdr-l">
+      <div class="eye">Ablny Technologies AS · Sovereign Zero Trust Cloud · OCI Edition</div>
+      <h1>6-Layer Zero Trust Security Architecture<br/><em>Live Threat & Access Stream</em></h1>
+    </div>
+    <div class="srow">
+      <div class="si"><div class="sd live"></div>All Layers Active</div>
+      <div class="si"><div class="sd live"></div>Zero Trust: Enforced</div>
+      <div class="si"><div class="sd" id="threat-dot" style="background:var(--green)"></div>Threat Level: <span id="threat-lbl">Low</span></div>
+      <div class="si"><div class="sd live"></div>FIPS 140-2 L3: Active</div>
+    </div>
+  </div>
+
+  <div class="ctrl">
+    <button class="cb primary" id="btn-play" onclick="togglePlay()">⏸ Pause</button>
+    <button class="cb active" id="s1x" onclick="setSpd(1)">1×</button>
+    <button class="cb" id="s2x" onclick="setSpd(1.8)">1.8×</button>
+    <button class="cb" id="s3x" onclick="setSpd(3)">3×</button>
+    <button class="cb red" onclick="triggerAttack()">🔴 Simulate Attack</button>
+    <button class="cb" onclick="triggerAudit()" style="border-color:var(--gold);color:var(--gold);">📋 Trigger Audit</button>
+    <button class="cb" onclick="triggerDeploy()" style="border-color:var(--purple);color:var(--purple);">🚀 Deploy Pipeline</button>
+  </div>
+
+  <div class="main">
+    <div class="viz">
+      <div id="cycle-b">Cycle: <span id="cyc-n">0</span></div>
+
+      <svg id="svg" viewBox="0 0 760 580" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:relative;z-index:1;">
+        <defs>
+          <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="glow2"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+
+        <!-- LAYER ZONES -->
+        <!-- L1: Governance & Identity (pink/red) -->
+        <rect x="260" y="8" width="490" height="130" rx="6" fill="rgba(232,90,74,.04)" stroke="#e85a4a" stroke-width="1" stroke-dasharray="5,4"/>
+        <text x="272" y="23" font-family="Syne,sans-serif" font-size="8.5" font-weight="700" letter-spacing=".15em" fill="#e85a4a">LAYER 1 — GOVERNANCE &amp; IDENTITY</text>
+
+        <!-- L2: Secure Supply Chain (blue) -->
+        <rect x="260" y="148" width="490" height="110" rx="6" fill="rgba(74,144,226,.04)" stroke="#4A90E2" stroke-width="1" stroke-dasharray="5,4"/>
+        <text x="272" y="163" font-family="Syne,sans-serif" font-size="8.5" font-weight="700" letter-spacing=".15em" fill="#4A90E2">LAYER 2 — SECURE SUPPLY CHAIN</text>
+
+        <!-- L3: Network Perimeter (cyan) -->
+        <rect x="8" y="8" width="240" height="250" rx="6" fill="rgba(0,212,255,.03)" stroke="#00d4ff" stroke-width="1" stroke-dasharray="5,4"/>
+        <text x="20" y="23" font-family="Syne,sans-serif" font-size="8.5" font-weight="700" letter-spacing=".15em" fill="#00d4ff">LAYER 3</text>
+        <text x="20" y="35" font-family="Syne,sans-serif" font-size="8.5" font-weight="700" letter-spacing=".15em" fill="#00d4ff">NETWORK PERIMETER</text>
+
+        <!-- L4: Data Sovereignty (green) -->
+        <rect x="8" y="268" width="740" height="120" rx="6" fill="rgba(0,232,122,.03)" stroke="#00e87a" stroke-width="1" stroke-dasharray="5,4"/>
+        <text x="20" y="283" font-family="Syne,sans-serif" font-size="8.5" font-weight="700" letter-spacing=".15em" fill="#00e87a">LAYER 4 — DATA SOVEREIGNTY</text>
+
+        <!-- L5: Runtime Defense (purple) -->
+        <rect x="8" y="398" width="740" height="110" rx="6" fill="rgba(155,89,182,.04)" stroke="#9b59b6" stroke-width="1" stroke-dasharray="5,4"/>
+        <text x="20" y="413" font-family="Syne,sans-serif" font-size="8.5" font-weight="700" letter-spacing=".15em" fill="#9b59b6">LAYER 5 — RUNTIME DEFENSE (OKE)</text>
+
+        <!-- L6: Audit & Observability (gold) -->
+        <rect x="8" y="518" width="740" height="55" rx="6" fill="rgba(255,215,0,.03)" stroke="#FFD700" stroke-width="1" stroke-dasharray="5,4"/>
+        <text x="20" y="533" font-family="Syne,sans-serif" font-size="8.5" font-weight="700" letter-spacing=".15em" fill="#FFD700">LAYER 6 — AUDIT &amp; OBSERVABILITY</text>
+
+        <!-- FLOW PATHS -->
+        <path id="fp-gov" d="M460,95 L460,150" stroke="#e85a4a" stroke-width="1.2" stroke-dasharray="4,3" fill="none" opacity=".3"/>
+        <path id="fp-iam-sc" d="M560,95 L560,150" stroke="#e85a4a" stroke-width="1.2" stroke-dasharray="4,3" fill="none" opacity=".3"/>
+        <path id="fp-sc-ds" d="M420,258 L420,270" stroke="#4A90E2" stroke-width="1.2" stroke-dasharray="4,3" fill="none" opacity=".3"/>
+        <path id="fp-fw-drg" d="M108,130 L108,178" stroke="#00d4ff" stroke-width="1.2" stroke-dasharray="4,3" fill="none" opacity=".3"/>
+        <path id="fp-drg-ds" d="M108,230 L108,270" stroke="#00d4ff" stroke-width="1.2" stroke-dasharray="4,3" fill="none" opacity=".3"/>
+        <path id="fp-ds-rt" d="M400,388 L400,400" stroke="#00e87a" stroke-width="1.2" stroke-dasharray="4,3" fill="none" opacity=".3"/>
+        <path id="fp-rt-audit" d="M300,508 L300,520" stroke="#9b59b6" stroke-width="1.2" stroke-dasharray="4,3" fill="none" opacity=".3"/>
+        <path id="fp-audit-loop" d="M600,540 Q720,540 720,200 Q720,80 620,60" stroke="#FFD700" stroke-width="1" stroke-dasharray="3,4" fill="none" opacity=".2"/>
+        <path id="fp-threat" d="M30,60 L30,400" stroke="#e85a4a" stroke-width="1" stroke-dasharray="3,4" fill="none" opacity=".15"/>
+
+        <!-- ══ NODES ══ -->
+
+        <!-- OCI TENANCY -->
+        <g id="n-ten" class="anode" data-tip="&lt;strong&gt;OCI Tenancy&lt;/strong&gt;Security Zones (Maximum). Compartment isolation. Root of all identity and policy. No resource can exist outside defined compartment boundaries." onmouseenter="showTip(event,this)" onmouseleave="hideTip()">
+          <rect x="280" y="32" width="155" height="60" rx="5" fill="var(--surface)" stroke="#e85a4a" stroke-width="1.5"/>
+          <text x="357" y="54" text-anchor="middle" fill="#e85a4a" font-family="IBM Plex Mono,monospace" font-size="9.5" font-weight="700">OCI Tenancy</text>
+          <text x="357" y="68" text-anchor="middle" fill="#4a6a8a" font-family="IBM Plex Mono,monospace" font-size="7">Security Zones (Maximum)</text>
+          <text x="357" y="80" text-anchor="middle" fill="#4a6a8a" font-family="IBM Plex Mono,monospace" font-size="7">Compartment Isolation</text>
+          <circle id="r-ten" cx="357" cy="62" r="40" fill="none" stroke="#e85a4a" stroke-width="1" opacity="0"/>
+        </g>
+
+        <!-- RESOURCE MANAGER -->
+        <g id="n-rm" class="anode" data-tip="&lt;strong&gt;Resource Manager&lt;/strong&gt;IaC drift detection. Compliant Terraform stacks. Enforces that all infrastructure changes go through code review — no manual console changes." onmouseenter="showTip(event,this)" onmouseleave="hideTip()">
+          <rect x="460" y="32" width="155" height="60" rx="5" fill="var(--surface)" stroke="#e85a4a" stroke-width="1.5"/>
+          <text x="537" y="54" text-anchor="middle" fill="#e85a4a" font-family="IBM Plex Mono,monospace" font-size="9.5" font-weight="700">Resource Manager</text>
+          <text x="537" y="68" text-anchor="middle" fill="#4a6a8a" font-family="IBM Plex Mono,monospace" font-size="7">Drift Detection</text>
+          <text x="537" y="80" text-anchor="middle" fill="#4a6a8a" font-family="IBM Plex Mono,monospace" font-size="7">Compliant IaC Stacks</text>
+        </g>
+
+        <!-- IAM IDENTITY -->
+        <g id="n-iam" class="anode" data-tip="&lt;strong&gt;IAM Identity&lt;/strong&gt;Identity Domains with MFA enforcement. Dynamic Groups for workload identity. Every API call requires a signed, verified identity token — no anonymous access." onmouseenter="showTip(event,this)" onmouseleave="hideTip()">
+          <rect x="370" y="105" width="170" height="60" rx="5" fill="var(--surface)" stroke="#e85a4a" stroke-width="2"/>
+          <text x="455" y="127" text-anchor="middle" fill="#e85a4a" font-family="IBM Plex Mono,monospace" font-size="9.5" font-weight="700">IAM Identity</text>
+          <text x="455" y="142" text-anchor="middle" fill="#4a6a8a" font-family="IBM Plex Mono,monospace" font-size="7">Identity Domains · MFA</text>
+          <text x="455" y="154" text-anchor="middle" fill="#4a6a8a" font-family="IBM Plex Mono,monospace" font-size="7">Dynamic Groups · AuthN</text>
+          <circle id="r-iam" cx="455" cy="135" r="45" fill="none" stroke="#e85a4a" stroke-width="1" opacity="0"/>
+        </g>
+
+        <!-- OCI DEVOPS -->
+        <g id="n-devops" class="anode" data-tip="&lt;strong&gt;OCI DevOps&lt;/strong&gt;Immutable build pipelines. Artifact signing with cosign. Every container image is cryptographically signed before it can be deployed. No unsigned artifacts ever run." onmouseenter="showTip(event,this)" onmouseleave="hideTip()">
+          <rect x="280" y="172" width="155" height="65" rx="5" fill="var(--surface)" stroke="#4A90E2" stroke-width="1.5"/>
+          <text x="357" y="194" text-anchor="middle" fill="#4A90E2" font-family="IBM Plex Mono,monospace" font-size="9.5" font-weight="700">OCI DevOps</text>
+          <text x="357" y="209" text-anchor="middle" fill="#4a6a8a" font-family="IBM Plex Mono,monospace" font-size="7">Immutable Build Pipelines</text>
+          <text x="357" y="221" text-anchor="middle" fill="#4a6a8a" font-family="IBM Plex Mono,monospace" font-size="7">Artifact Signing</text>
+          <circle id="r-devops" cx="357" cy="204" r="42" fill="none" stroke="#4A90E2" stroke-width="1" opacity="0"/>
+        </g>
+
+        <!-- VULNERABILITY SCAN -->
+        <g id="n-vs" class="anode" data-tip="&lt;strong&gt;Vulnerability Scan&lt;/strong&gt;Continuous assessment of all container images. CVE detection, policy blocking of critical vulnerabilities. No image with HIGH/CRITICAL CVE can be pushed to registry." onmouseenter="showTip(event,this)" onmouseleave="hideTip()">
+          <rect x="460" y="172" width="155" height="65" rx="5" fill="var(--surface)" stroke="#4A90E2" stroke-width="1.5"/>
+          <text x="537" y="194" text-anchor="middle" fill="#4A90E2" font-family="IBM Plex Mono,monospace" font-size="9.5" font-weight="700">Vulnerability Scan</text>
+          <text x="537" y="209" text-anchor="middle" fill="#4a6a8a" font-family="IBM Plex Mono,monospace" font-size="7">Continuous Assessment</text>
+          <text x="537" y="221" text-anchor="middle" fill="#4a6a8a" font-family="IBM Plex Mono,monospace" font-size="7">Container Image Analysis</text>
+          <circle id="r-vs" cx="537" cy="204" r="42" fill="none" stroke="#4A90E2" stroke-width="1" opacity="0"/>
+        </g>
+
+        <!-- OCI FIREWALL -->
+        <g id="n-fw" class="anode" data-tip="&lt;strong&gt;OCI Firewall&lt;/strong&gt;Palo Alto Engine. TLS inspection of all inbound and east-west traffic. Intrusion Prevention System. All traffic is inspected — no implicit trust between network segments." onmouseenter="showTip(event,this)" onmouseleave="hideTip()">
+          <rect x="28" y="42" width="150" height="65" rx="5" fill="var(--surface)" stroke="#00d4ff" stroke-width="1.5"/>
+          <text x="103" y="64" text-anchor="middle" fill="#00d4ff" font-family="IBM Plex Mono,monospace" font-size="9.5" font-weight="700">OCI Firewall</text>
+          <text x="103" y="79" text-anchor="middle" fill="#4a6a8a" font-family="IBM Plex Mono,monospace" font-size="7">Palo Alto Engine</text>
+          <text x="103" y="91" text-anchor="middle" fill="#4a6a8a" font-family="IBM Plex Mono,monospace" font-size="7">TLS Inspection</text>
+          <circle id="r-fw" cx="103" cy="74" r="42" fill="none" stroke="#00d4ff" stroke-width="1" opacity="0"/>
+        </g>
+
+        <!-- DRG HUB -->
+        <g id="n-drg" class="anode" data-tip="&lt;strong&gt;DRG Hub&lt;/strong&gt;Dynamic Routing Gateway. Transit Spoke Model — all VCN-to-VCN traffic routed through central inspection point. Micro-segmentation enforced at network layer." onmouseenter="showTip(event,this)" onmouseleave="hideTip()">
+          <rect x="28" y="178" width="150" height="65" rx="5" fill="var(--surface)" stroke="#00d4ff" stroke-width="1.5"/>
+          <text x="103" y="200" text-anchor="middle" fill="#00d4ff" font-family="IBM Plex Mono,monospace" font-size="9.5" font-weight="700">DRG Hub</text>
+          <text x="103" y="215" text-anchor="middle" fill="#4a6a8a" font-family="IBM Plex Mono,monospace" font-size="7">Dynamic Routing Gateway</text>
+          <text x="103" y="227" text-anchor="middle" fill="#4a6a8a" font-family="IBM Plex Mono,monospace" font-size="7">Transit Spoke Model</text>
+          <circle id="r-drg" cx="103" cy="210" r="42" fill="none" stroke="#00d4ff" stroke-width="1" opacity="0"/>
+        </g>
+
+        <!-- SERVICE GATEWAY -->
+        <g id="n-sg" class="anode" data-tip="&lt;strong&gt;Service Gateway&lt;/strong&gt;Private Oracle Network only. Absolutely no public internet path. All OCI service API calls stay within Oracle's backbone — traffic never traverses the public internet." onmouseenter="showTip(event,this)" onmouseleave="hideTip()">
+          <rect x="28" y="292" width="150" height="65" rx="5" fill="var(--surface)" stroke="#00e87a" stroke-width="1.5"/>
+          <text x="103" y="314" text-anchor="middle" fill="#00e87a" font-family="IBM Plex Mono,monospace" font-size="9.5" font-weight="700">Service Gateway</text>
+          <text x="103" y="329" text-anchor="middle" fill="#4a6a8a" font-family="IBM Plex Mono,monospace" font-size="7">Private Oracle Network</text>
+          <text x="103" y="341" text-anchor="middle" fill="#4a6a8a" font-family="IBM Plex Mono,monospace" font-size="7">No Public Internet</text>
+        </g>
+
+        <!-- OCI VAULT -->
+        <g id="n-vault" class="anode" data-tip="&lt;strong&gt;OCI Vault&lt;/strong&gt;Customer Managed Keys (CMK). FIPS 140-2 Level 3 HSM. All encryption keys never leave the HSM boundary. Data can only be decrypted by authenticated workloads with verified identity." onmouseenter="showTip(event,this)" onmouseleave="hideTip()">
+          <rect x="300" y="292" width="180" height="65" rx="5" fill="var(--surface)" stroke="#00e87a" stroke-width="2"/>
+          <text x="390" y="314" text-anchor="middle" fill="#00e87a" font-family="IBM Plex Mono,monospace" font-size="9.5" font-weight="700">OCI Vault</text>
+          <text x="390" y="329" text-anchor="middle" fill="#4a6a8a" font-family="IBM Plex Mono,monospace" font-size="7">Customer Managed Keys</text>
+          <text x="390" y="341" text-anchor="middle" fill="#4a6a8a" font-family="IBM Plex Mono,monospace" font-size="7">FIPS 140-2 L3 HSM</text>
+          <circle id="r-vault" cx="390" cy="324" r="48" fill="none" stroke="#00e87a" stroke-width="1" opacity="0"/>
+        </g>
+
+        <!-- OCI REGISTRY -->
+        <g id="n-ocir" class="anode" data-tip="&lt;strong&gt;OCI Registry (OCIR)&lt;/strong&gt;Private container repository. Immutable tags — once pushed, images cannot be modified or deleted. Only signed images from the DevOps pipeline are accepted." onmouseenter="showTip(event,this)" onmouseleave="hideTip()">
+          <rect x="510" y="292" width="160" height="65" rx="5" fill="var(--surface)" stroke="#00e87a" stroke-width="1.5"/>
+          <text x="590" y="314" text-anchor="middle" fill="#00e87a" font-family="IBM Plex Mono,monospace" font-size="9.5" font-weight="700">OCI Registry</text>
+          <text x="590" y="329" text-anchor="middle" fill="#4a6a8a" font-family="IBM Plex Mono,monospace" font-size="7">Private Repo · OCIR</text>
+          <text x="590" y="341" text-anchor="middle" fill="#4a6a8a" font-family="IBM Plex Mono,monospace" font-size="7">Immutable Tags</text>
+          <circle id="r-ocir" cx="590" cy="324" r="44" fill="none" stroke="#00e87a" stroke-width="1" opacity="0"/>
+        </g>
+
+        <!-- OKE CLUSTER -->
+        <g id="n-oke" class="anode" data-tip="&lt;strong&gt;OKE Cluster&lt;/strong&gt;Oracle Kubernetes Engine. Virtual nodes with hardened host OS. CIS benchmark enforced. Pod Security Standards. Network policies blocking all non-whitelisted pod-to-pod communication." onmouseenter="showTip(event,this)" onmouseleave="hideTip()">
+          <rect x="28" y="422" width="175" height="65" rx="5" fill="var(--surface)" stroke="#9b59b6" stroke-width="1.5"/>
+          <text x="115" y="444" text-anchor="middle" fill="#9b59b6" font-family="IBM Plex Mono,monospace" font-size="9.5" font-weight="700">OKE Cluster</text>
+          <text x="115" y="459" text-anchor="middle" fill="#4a6a8a" font-family="IBM Plex Mono,monospace" font-size="7">Virtual Nodes · Hardened OS</text>
+          <text x="115" y="471" text-anchor="middle" fill="#4a6a8a" font-family="IBM Plex Mono,monospace" font-size="7">CIS Benchmark · Pod Security</text>
+          <circle id="r-oke" cx="115" cy="454" r="46" fill="none" stroke="#9b59b6" stroke-width="1" opacity="0"/>
+        </g>
+
+        <!-- POLICY ENFORCEMENT -->
+        <g id="n-pe" class="anode" data-tip="&lt;strong&gt;Policy Enforcement&lt;/strong&gt;OPA Admission Controllers. Zero Trust Authorization — every request evaluated against policy at runtime. No implicit trust even for pods inside the cluster." onmouseenter="showTip(event,this)" onmouseleave="hideTip()">
+          <rect x="230" y="422" width="240" height="65" rx="5" fill="var(--surface)" stroke="#9b59b6" stroke-width="2"/>
+          <text x="350" y="444" text-anchor="middle" fill="#9b59b6" font-family="IBM Plex Mono,monospace" font-size="9.5" font-weight="700">Policy Enforcement</text>
+          <text x="350" y="459" text-anchor="middle" fill="#4a6a8a" font-family="IBM Plex Mono,monospace" font-size="7">Admission Controllers · OPA</text>
+          <text x="350" y="471" text-anchor="middle" fill="#4a6a8a" font-family="IBM Plex Mono,monospace" font-size="7">Zero Trust Authorization</text>
+          <circle id="r-pe" cx="350" cy="454" r="60" fill="none" stroke="#9b59b6" stroke-width="1" opacity="0"/>
+        </g>
+
+        <!-- CLOUD GUARD -->
+        <g id="n-cg" class="anode" data-tip="&lt;strong&gt;Cloud Guard&lt;/strong&gt;Threat Detector with ML-based anomaly detection. Responder Recipes for automated remediation. Detects misconfigurations, suspicious activity, and policy violations in real time." onmouseenter="showTip(event,this)" onmouseleave="hideTip()">
+          <rect x="498" y="422" width="240" height="65" rx="5" fill="var(--surface)" stroke="#9b59b6" stroke-width="1.5"/>
+          <text x="618" y="444" text-anchor="middle" fill="#9b59b6" font-family="IBM Plex Mono,monospace" font-size="9.5" font-weight="700">Cloud Guard</text>
+          <text x="618" y="459" text-anchor="middle" fill="#4a6a8a" font-family="IBM Plex Mono,monospace" font-size="7">Threat Detector · ML Anomaly</text>
+          <text x="618" y="471" text-anchor="middle" fill="#4a6a8a" font-family="IBM Plex Mono,monospace" font-size="7">Responder Recipes · Auto-Remediate</text>
+          <circle id="r-cg" cx="618" cy="454" r="48" fill="none" stroke="#9b59b6" stroke-width="1" opacity="0"/>
+        </g>
+
+        <!-- CONNECTOR HUB -->
+        <g id="n-ch" class="anode" data-tip="&lt;strong&gt;Connector Hub&lt;/strong&gt;Centralized log stream aggregation. Real-time analysis pipeline. All 6 layers stream events here — creates a single audit trail for compliance, forensics, and threat hunting." onmouseenter="showTip(event,this)" onmouseleave="hideTip()">
+          <rect x="200" y="532" width="175" height="38" rx="5" fill="var(--surface)" stroke="#FFD700" stroke-width="1.5"/>
+          <text x="287" y="548" text-anchor="middle" fill="#FFD700" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="700">Connector Hub</text>
+          <text x="287" y="561" text-anchor="middle" fill="#4a6a8a" font-family="IBM Plex Mono,monospace" font-size="6.5">Centralized Log Stream</text>
+          <circle id="r-ch" cx="287" cy="548" r="38" fill="none" stroke="#FFD700" stroke-width="1" opacity="0"/>
+        </g>
+
+        <!-- LOGGING ANALYTICS -->
+        <g id="n-la" class="anode" data-tip="&lt;strong&gt;Logging Analytics&lt;/strong&gt;SIEM integration. Audit trail retention (7 years). Compliance reporting for ISO 27001, SOC2, EU sovereignty mandates. Machine learning on log patterns for proactive threat detection." onmouseenter="showTip(event,this)" onmouseleave="hideTip()">
+          <rect x="400" y="532" width="175" height="38" rx="5" fill="var(--surface)" stroke="#FFD700" stroke-width="1.5"/>
+          <text x="487" y="548" text-anchor="middle" fill="#FFD700" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="700">Logging Analytics</text>
+          <text x="487" y="561" text-anchor="middle" fill="#4a6a8a" font-family="IBM Plex Mono,monospace" font-size="6.5">SIEM · Audit Trail · Retention</text>
+          <circle id="r-la" cx="487" cy="548" r="38" fill="none" stroke="#FFD700" stroke-width="1" opacity="0"/>
+        </g>
+
+        <!-- PARTICLES -->
+        <circle id="p1" r="4" fill="#e85a4a" opacity="0"><animateMotion id="m1" dur=".9s" fill="freeze"><mpath href="#fp-gov"/></animateMotion><animate id="a1" attributeName="opacity" values="0;1;1;0" dur=".9s" fill="freeze"/></circle>
+        <circle id="p2" r="4" fill="#e85a4a" opacity="0"><animateMotion id="m2" dur=".9s" fill="freeze"><mpath href="#fp-iam-sc"/></animateMotion><animate id="a2" attributeName="opacity" values="0;1;1;0" dur=".9s" fill="freeze"/></circle>
+        <circle id="p3" r="4" fill="#4A90E2" opacity="0"><animateMotion id="m3" dur=".9s" fill="freeze"><mpath href="#fp-sc-ds"/></animateMotion><animate id="a3" attributeName="opacity" values="0;1;1;0" dur=".9s" fill="freeze"/></circle>
+        <circle id="p4" r="4" fill="#00d4ff" opacity="0"><animateMotion id="m4" dur=".8s" fill="freeze"><mpath href="#fp-fw-drg"/></animateMotion><animate id="a4" attributeName="opacity" values="0;1;1;0" dur=".8s" fill="freeze"/></circle>
+        <circle id="p5" r="4" fill="#00d4ff" opacity="0"><animateMotion id="m5" dur=".9s" fill="freeze"><mpath href="#fp-drg-ds"/></animateMotion><animate id="a5" attributeName="opacity" values="0;1;1;0" dur=".9s" fill="freeze"/></circle>
+        <circle id="p6" r="5" fill="#00e87a" opacity="0"><animateMotion id="m6" dur="1s" fill="freeze"><mpath href="#fp-ds-rt"/></animateMotion><animate id="a6" attributeName="opacity" values="0;1;1;0" dur="1s" fill="freeze"/></circle>
+        <circle id="p7" r="4" fill="#9b59b6" opacity="0"><animateMotion id="m7" dur=".9s" fill="freeze"><mpath href="#fp-rt-audit"/></animateMotion><animate id="a7" attributeName="opacity" values="0;1;1;0" dur=".9s" fill="freeze"/></circle>
+        <circle id="p8" r="3" fill="#FFD700" opacity="0"><animateMotion id="m8" dur="2.5s" fill="freeze"><mpath href="#fp-audit-loop"/></animateMotion><animate id="a8" attributeName="opacity" values="0;.7;.7;0" dur="2.5s" fill="freeze"/></circle>
+        <circle id="p9" r="3" fill="#e85a4a" opacity="0"><animateMotion id="m9" dur="2s" fill="freeze"><mpath href="#fp-threat"/></animateMotion><animate id="a9" attributeName="opacity" values="0;.5;.5;0" dur="2s" fill="freeze"/></circle>
+
+        <!-- active ring -->
+        <circle id="aring" cx="0" cy="0" r="30" fill="none" stroke="#00d4ff" stroke-width="1.5" opacity="0"/>
+      </svg>
+    </div>
+
+    <div class="side">
+      <!-- PIPELINE -->
+      <div class="card">
+        <div class="ct">Zero Trust Validation Cycle</div>
+        <div class="pipe" id="pipe">
+          <div class="ps pending" id="p0"><div class="pi"></div>L1 — Governance established</div>
+          <div class="ps pending" id="p1"><div class="pi"></div>L1 — IAM identity verified</div>
+          <div class="ps pending" id="p2"><div class="pi"></div>L2 — Supply chain scanned</div>
+          <div class="ps pending" id="p3"><div class="pi"></div>L2 — Artifact signed & pushed</div>
+          <div class="ps pending" id="p4"><div class="pi"></div>L3 — Firewall TLS inspected</div>
+          <div class="ps pending" id="p5"><div class="pi"></div>L3 — DRG routing enforced</div>
+          <div class="ps pending" id="p6"><div class="pi"></div>L4 — Keys decrypted (FIPS L3)</div>
+          <div class="ps pending" id="p7"><div class="pi"></div>L4 — Private network only</div>
+          <div class="ps pending" id="p8"><div class="pi"></div>L5 — OKE admission control</div>
+          <div class="ps pending" id="p9"><div class="pi"></div>L5 — Cloud Guard monitoring</div>
+          <div class="ps pending" id="p10"><div class="pi"></div>L6 — Audit trail recorded</div>
+        </div>
+      </div>
+
+      <!-- METRICS -->
+      <div class="card">
+        <div class="ct">Security Metrics</div>
+        <div class="mr"><span>Threats Blocked</span><span class="mv vr" id="m-threats">0</span></div>
+        <div class="mr"><span>Identities Verified</span><span class="mv vg" id="m-ids">0</span></div>
+        <div class="mr"><span>CVEs Scanned</span><span class="mv vc" id="m-cves">0</span></div>
+        <div class="mr"><span>Audit Events</span><span class="mv" style="color:var(--gold)" id="m-audit">0</span></div>
+        <div class="mr"><span>Compliance Score</span><span class="mv vg" id="m-comp">99.8%</span></div>
+        <div class="mr"><span>Threat Level</span><span class="mv vo" id="m-tlevel">LOW</span></div>
+        <div class="tl-bar"><div class="tl-fill" id="tl-fill" style="width:12%;background:var(--green)"></div></div>
+      </div>
+
+      <!-- THREAT LOG -->
+      <div class="card" style="flex:1;">
+        <div class="ct">Security Event Log</div>
+        <div class="tf" id="logfeed"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="btm">
+    <div class="pill">Platform: <span>Sovereign Zero Trust Cloud</span></div>
+    <div class="pill">Cloud: <span>Oracle Cloud Infrastructure (OCI)</span></div>
+    <div class="pill">Security: <span>FIPS 140-2 L3 · Zero Trust</span></div>
+    <div class="pill">Runtime: <span>OKE · Hardened Kubernetes</span></div>
+    <div class="pill">Compliance: <span>ISO 27001 · SOC2 · EU Sovereignty</span></div>
+    <div class="pill">Contact: <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f383819c9786908780b392919f9d8a8796909bdd909c9e">[email&#160;protected]</a></span></div>
+  </div>
+</div>
+
+<div id="tt-el"></div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+let playing=true, speed=1, cycN=0, threats=0, ids=0, cves=0, auditEv=0;
+let attackMode=false, auditMode=false, deployMode=false;
+let timer=null;
+
+function ts(){return new Date().toTimeString().slice(0,8);}
+function log(msg,cls=''){
+  const f=document.getElementById('logfeed');
+  const el=document.createElement('div');
+  el.className='te';
+  el.innerHTML=`<span class="tt">${ts()}</span><span class="tm ${cls}">${msg}</span>`;
+  f.insertBefore(el,f.firstChild);
+  while(f.children.length>22)f.removeChild(f.lastChild);
+}
+function setPipe(i){
+  for(let k=0;k<11;k++){
+    const el=document.getElementById('p'+k);
+    if(!el)continue;
+    if(k<i)el.className='ps done';
+    else if(k===i)el.className='ps active';
+    else el.className='ps pending';
+    el.querySelector('.pi').style.background=k<i?'var(--muted)':k===i?'var(--cyan)':'#1a3a5a';
+  }
+}
+function fireP(pid){
+  const p=document.getElementById(pid);
+  if(!p)return;
+  const par=p.parentNode;
+  const cl=p.cloneNode(true);
+  cl.id=pid;
+  par.replaceChild(cl,p);
+  cl.querySelectorAll('animateMotion').forEach(a=>a.beginElement());
+  cl.querySelectorAll('animate').forEach(a=>a.beginElement());
+}
+function glowNode(id,color){
+  const node=document.getElementById(id);
+  const ring=document.getElementById('aring');
+  if(!node||!ring)return;
+  const box=node.querySelector('rect');
+  if(!box)return;
+  const cx=+box.getAttribute('x')+ +box.getAttribute('width')/2;
+  const cy=+box.getAttribute('y')+ +box.getAttribute('height')/2;
+  ring.setAttribute('cx',cx);ring.setAttribute('cy',cy);
+  ring.setAttribute('stroke',color);ring.setAttribute('opacity','0.7');
+  ring.setAttribute('r',Math.max(+box.getAttribute('width'),+box.getAttribute('height'))/2+10);
+  box.setAttribute('filter','url(#glow)');box.setAttribute('stroke-width','2.5');
+  setTimeout(()=>{box.setAttribute('stroke-width','1.5');box.removeAttribute('filter');ring.setAttribute('opacity','0');},900/speed);
+}
+function updateMetrics(){
+  ids++;cves+=Math.floor(Math.random()*3+1);auditEv+=Math.floor(Math.random()*5+3);
+  if(attackMode)threats++;
+  document.getElementById('m-threats').textContent=threats;
+  document.getElementById('m-ids').textContent=ids;
+  document.getElementById('m-cves').textContent=cves;
+  document.getElementById('m-audit').textContent=auditEv;
+  const comp=attackMode?(97+Math.random()*1.5).toFixed(1):(99.5+Math.random()*.4).toFixed(1);
+  document.getElementById('m-comp').textContent=comp+'%';
+  const tl=attackMode?'HIGH':auditMode?'MEDIUM':'LOW';
+  document.getElementById('m-tlevel').textContent=tl;
+  document.getElementById('m-tlevel').className='mv '+(attackMode?'vr':auditMode?'vo':'vg');
+  const fill=attackMode?75:auditMode?35:12;
+  const fillEl=document.getElementById('tl-fill');
+  fillEl.style.width=fill+'%';
+  fillEl.style.background=attackMode?'var(--red)':auditMode?'var(--orange)':'var(--green)';
+  document.getElementById('threat-dot').style.background=attackMode?'var(--red)':auditMode?'var(--orange)':'var(--green)';
+  document.getElementById('threat-lbl').textContent=tl;
+}
+
+const STEPS=[
+  {node:'n-ten',pipe:0,color:'#e85a4a',ps:['p9'],logFn:()=>log('L1 OCI Tenancy: Security Zone enforced — compartment boundary verified','tok')},
+  {node:'n-rm', pipe:0,color:'#e85a4a',ps:[],  logFn:()=>log(auditMode?'📋 Resource Manager: IaC drift scan initiated — 0 violations':'Resource Manager: Terraform stack compliant','tok')},
+  {node:'n-iam',pipe:1,color:'#e85a4a',ps:['p1','p2'],logFn:()=>{ids++;log(attackMode?'⚠ IAM: Anomalous login attempt blocked — MFA required':'IAM Identity: MFA verified — token issued','tok');}},
+  {node:'n-devops',pipe:2,color:'#4A90E2',ps:['p3'],logFn:()=>log(deployMode?'🚀 DevOps: New pipeline triggered — build #'+Math.floor(Math.random()*900+100):'OCI DevOps: Immutable pipeline run — artifacts signed','tok')},
+  {node:'n-vs',pipe:3,color:'#4A90E2',ps:[],logFn:()=>{const c=Math.floor(Math.random()*3);cves+=c;log(attackMode?'⚠ Vuln Scan: '+Math.floor(Math.random()*3+1)+' HIGH CVEs detected — image BLOCKED':'Vuln Scan: '+c+' LOW CVEs — image APPROVED',attackMode?'tw':'tok');}},
+  {node:'n-fw', pipe:4,color:'#00d4ff',ps:['p4'],logFn:()=>log(attackMode?'🔴 Firewall: DDoS pattern detected — traffic throttled':'Firewall: TLS 1.3 inspection passed — clean traffic',attackMode?'tr':'tok')},
+  {node:'n-drg',pipe:5,color:'#00d4ff',ps:['p5'],logFn:()=>log('DRG Hub: Transit routing enforced — spoke isolation verified','tok')},
+  {node:'n-vault',pipe:6,color:'#00e87a',ps:['p6'],logFn:()=>log('OCI Vault: FIPS 140-2 L3 key decrypt — workload identity verified','tok')},
+  {node:'n-sg', pipe:7,color:'#00e87a',ps:[],logFn:()=>log('Service Gateway: Private Oracle network confirmed — no public path','tok')},
+  {node:'n-ocir',pipe:7,color:'#00e87a',ps:[],logFn:()=>log('OCIR: Signed image pulled — immutable tag verified','tok')},
+  {node:'n-oke', pipe:8,color:'#9b59b6',ps:[],logFn:()=>log('OKE Cluster: Pod admitted — CIS benchmark pass','tok')},
+  {node:'n-pe',  pipe:8,color:'#9b59b6',ps:['p7'],logFn:()=>log('Policy Enforcement: OPA admission — Zero Trust AuthZ granted','tok')},
+  {node:'n-cg',  pipe:9,color:'#9b59b6',ps:[],logFn:()=>log(attackMode?'🔴 Cloud Guard: Threat detected — Responder Recipe executing':'Cloud Guard: No anomalies — all patterns nominal','tok')},
+  {node:'n-ch',  pipe:10,color:'#FFD700',ps:['p8'],logFn:()=>{auditEv+=5;log('Connector Hub: '+Math.floor(Math.random()*20+10)+' events streamed to SIEM','tok');}},
+  {node:'n-la',  pipe:10,color:'#FFD700',ps:[],logFn:()=>log('Logging Analytics: Audit trail updated — compliance '+( attackMode?'REVIEW':'PASS'),'tok')},
+];
+const DURS=[700,600,900,800,800,700,700,900,600,600,700,700,700,800,700];
+
+function runCycle(){
+  if(!playing)return;
+  cycN++;document.getElementById('cyc-n').textContent=cycN;
+  let i=0;
+  function next(){
+    if(!playing)return;
+    if(i>=STEPS.length){updateMetrics();timer=setTimeout(()=>runCycle(),600/speed);return;}
+    const s=STEPS[i];
+    setPipe(s.pipe);
+    glowNode(s.node,s.color);
+    s.ps.forEach(p=>fireP(p));
+    s.logFn();
+    timer=setTimeout(()=>{i++;next();},DURS[i]/speed);
+  }
+  next();
+}
+
+function togglePlay(){
+  playing=!playing;
+  const btn=document.getElementById('btn-play');
+  if(playing){btn.textContent='⏸ Pause';btn.className='cb primary';runCycle();}
+  else{btn.textContent='▶ Play';btn.className='cb';if(timer)clearTimeout(timer);}
+}
+function setSpd(s){
+  speed=s;
+  ['s1x','s2x','s3x'].forEach(id=>{const el=document.getElementById(id);if(el)el.classList.remove('active');});
+  const map={1:'s1x',1.8:'s2x',3:'s3x'};
+  const el=document.getElementById(map[s]);if(el)el.classList.add('active');
+}
+function triggerAttack(){
+  attackMode=true;
+  log('🔴 ATTACK SIMULATION: Intrusion attempt detected — all layers on high alert','tr');
+  log('🔴 IAM: Brute force pattern — rate limiting engaged','tr');
+  setTimeout(()=>{attackMode=false;log('✓ Attack simulation complete — all threats neutralized','tok');},10000/speed);
+}
+function triggerAudit(){
+  auditMode=true;
+  log('📋 COMPLIANCE AUDIT: Full 6-layer audit initiated','tw');
+  log('📋 Generating ISO 27001 + EU Sovereignty evidence package','tw');
+  setTimeout(()=>{auditMode=false;log('✓ Audit complete — compliance score: 99.8%','tok');},8000/speed);
+}
+function triggerDeploy(){
+  deployMode=true;
+  log('🚀 DEPLOY PIPELINE: New release pipeline triggered','tok');
+  log('🚀 Container build → scan → sign → push → OKE rolling deploy');
+  setTimeout(()=>{deployMode=false;log('✓ Deployment complete — zero-downtime rollout verified','tok');},7000/speed);
+}
+function showTip(e,el){
+  const t=document.getElementById('tt-el');
+  t.innerHTML=el.getAttribute('data-tip');
+  t.style.display='block';
+  t.style.left=(e.clientX+14)+'px';
+  t.style.top=(e.clientY-10)+'px';
+}
+function hideTip(){document.getElementById('tt-el').style.display='none';}
+
+log('Zero Trust Cloud initialized — 6 layers ac-e 
+</script>
+</body>
+</html>

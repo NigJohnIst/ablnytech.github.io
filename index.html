@@ -3,58 +3,84 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ablny Technologies AS — AI Energy, Bioprocess & Sovereign Cloud Platforms</title>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet"/>
+  <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN"/>
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"/>
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()"/>
+  <meta name="robots" content="index, follow"/>
+  <meta name="description" content="Ablny Technologies AS — AI-enabled green energy, bioprocess digital twins, sovereign OCI zero trust cloud, EPCIC, ERP and carbon market platforms. EU AI Act compliant. Norway."/>
+  <title>Ablny Technologies AS — AI Energy, Bioprocess &amp; Sovereign Cloud Platforms</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet" crossorigin="anonymous"/>
+  <link rel="canonical" href="https://ablnytech.com/"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous" defer></script>
   <style>
-    :root{--bg:#050d0a;--surface:#0b1a14;--surface2:#0f231a;--border:#1a3a2a;--green:#00e87a;--green2:#00b85e;--green-dim:#00e87a18;--blue:#4A90E2;--lilac:#C8A2C8;--red:#e87a7a;--gold:#FFD700;--orange:#FFA500;--sky:#B0E0E6;--text:#d6ede3;--muted:#6b9e82;--font-head:'Syne',sans-serif;--font-body:'IBM Plex Mono',monospace;--font-serif:'Fraunces',serif;}
+
+    :root{
+      --bg:#03080f;--surface:#060e1a;--surface2:#0a1628;--border:#0f2540;
+      --green:#00ff88;--green2:#00cc6a;--green-dim:#00ff8814;
+      --blue:#38bdf8;--blue2:#0ea5e9;--blue-dim:#38bdf810;
+      --cyan:#00d4ff;--purple:#a78bfa;--purple-dim:#a78bfa12;
+      --lilac:#C8A2C8;--red:#f87171;--gold:#fbbf24;--orange:#fb923c;--sky:#7dd3fc;
+      --text:#e2f4ff;--muted:#4a7aaa;
+      --accent1:#00ff88;--accent2:#38bdf8;--accent3:#a78bfa;
+      --font-head:'Syne',sans-serif;--font-body:'IBM Plex Mono',monospace;--font-serif:'Fraunces',serif;
+    }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
     body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:14px;line-height:1.7;overflow-x:hidden;}
-    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:0.4;}
+    /* Deep space grid */
+    body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(56,189,248,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.025) 1px,transparent 1px);background-size:52px 52px;pointer-events:none;z-index:0;}
+    /* Ambient glow */
+    body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 90% 50% at 80% 10%,rgba(167,139,250,.06) 0%,transparent 60%),radial-gradient(ellipse 70% 40% at 10% 80%,rgba(0,212,255,.05) 0%,transparent 60%);pointer-events:none;z-index:0;}
     section{position:relative;z-index:1;}
-    .sl{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--green);margin-bottom:.6rem;}
+    .sl{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--cyan);margin-bottom:.6rem;}
     .st{font-family:var(--font-head);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;}
     @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
-    @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+    @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.2;}}
+    @keyframes shimmer{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
     .pulse{animation:pulse 2s ease-in-out infinite;}
 
     /* NAV */
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 3rem;background:rgba(5,13,10,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
-    .nav-logo{font-family:var(--font-head);font-size:1.05rem;font-weight:800;letter-spacing:.1em;color:var(--green);text-transform:uppercase;}
-    .nav-logo span{color:var(--text);}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 3rem;background:rgba(3,8,15,.88);backdrop-filter:blur(24px);border-bottom:1px solid rgba(56,189,248,.12);}
+    .nav-logo{font-family:var(--font-head);font-size:1.05rem;font-weight:800;letter-spacing:.1em;background:linear-gradient(90deg,var(--green),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-transform:uppercase;}
+    .nav-logo span{background:linear-gradient(90deg,var(--cyan),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
     .nav-links{display:flex;gap:1.5rem;list-style:none;}
     .nav-links a{color:var(--muted);text-decoration:none;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;transition:color .2s;}
-    .nav-links a:hover{color:var(--green);}
-    .nav-cta{font-size:.65rem;color:var(--green);border:1px solid var(--green);padding:.35rem 1rem;border-radius:2px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:background .2s,color .2s;}
-    .nav-cta:hover{background:var(--green);color:var(--bg);}
+    .nav-links a:hover{color:var(--cyan);}
+    .nav-cta{font-size:.65rem;color:var(--cyan);border:1px solid rgba(0,212,255,.4);padding:.35rem 1rem;border-radius:2px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:all .2s;background:rgba(0,212,255,.06);}
+    .nav-cta:hover{background:var(--cyan);color:var(--bg);}
 
     /* HERO */
     .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8rem 3rem 5rem;overflow:hidden;}
-    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,232,122,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,232,122,.04) 1px,transparent 1px);background-size:55px 55px;mask-image:radial-gradient(ellipse 80% 70% at 50% 50%,black 20%,transparent 100%);}
-    .hero-glow{position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(0,232,122,.07) 0%,transparent 70%);top:5%;left:45%;transform:translateX(-50%);pointer-events:none;}
-    .hero-eye{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--green);margin-bottom:1.5rem;opacity:0;animation:fadeUp .8s .2s forwards;}
+    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(56,189,248,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.04) 1px,transparent 1px);background-size:55px 55px;mask-image:radial-gradient(ellipse 80% 70% at 50% 50%,black 20%,transparent 100%);}
+    .hero-glow{position:absolute;pointer-events:none;}
+    .hero-glow-1{width:800px;height:800px;background:radial-gradient(circle,rgba(0,255,136,.07) 0%,transparent 65%);top:-10%;left:40%;transform:translateX(-50%);}
+    .hero-glow-2{width:600px;height:600px;background:radial-gradient(circle,rgba(167,139,250,.06) 0%,transparent 65%);top:20%;right:-10%;}
+    .hero-glow-3{width:500px;height:500px;background:radial-gradient(circle,rgba(0,212,255,.05) 0%,transparent 65%);bottom:5%;left:5%;}
+    .hero-eye{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--cyan);margin-bottom:1.5rem;opacity:0;animation:fadeUp .8s .2s forwards;}
     .hero h1{font-family:var(--font-head);font-size:clamp(3rem,6.5vw,6rem);font-weight:800;line-height:1;letter-spacing:-.03em;max-width:14ch;opacity:0;animation:fadeUp .8s .4s forwards;}
-    .hero h1 em{font-family:var(--font-serif);font-style:italic;font-weight:300;color:var(--green);}
+    .hero h1 em{font-family:var(--font-serif);font-style:italic;font-weight:300;background:linear-gradient(120deg,var(--green),var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200% 200%;animation:shimmer 4s ease infinite;}
     .hero-desc{max-width:58ch;margin-top:1.8rem;color:var(--muted);font-size:.82rem;line-height:1.9;opacity:0;animation:fadeUp .8s .6s forwards;}
     .chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2.5rem;opacity:0;animation:fadeUp .8s .8s forwards;}
     .chip{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .85rem;border:1px solid var(--border);border-radius:2px;color:var(--muted);background:var(--surface);}
-    .chip.g{border-color:var(--green2);color:var(--green);background:var(--green-dim);}
-    .chip.b{border-color:#4A90E2;color:#4A90E2;background:rgba(74,144,226,.08);}
-    .chip.o{border-color:#FFA500;color:#FFA500;background:rgba(255,165,0,.08);}
+    .chip.g{border-color:rgba(0,255,136,.35);color:var(--green);background:var(--green-dim);}
+    .chip.b{border-color:rgba(56,189,248,.35);color:var(--blue);background:var(--blue-dim);}
+    .chip.o{border-color:rgba(251,146,60,.35);color:var(--orange);background:rgba(251,146,60,.08);}
+    .chip.p{border-color:rgba(167,139,250,.35);color:var(--purple);background:var(--purple-dim);}
     .hero-ctas{display:flex;gap:1rem;margin-top:2.5rem;flex-wrap:wrap;opacity:0;animation:fadeUp .8s 1s forwards;}
     .btn{font-family:var(--font-body);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:.8rem 1.8rem;border-radius:2px;text-decoration:none;transition:all .2s;display:inline-block;}
-    .btn-p{background:var(--green);color:var(--bg);border:1px solid var(--green);}
-    .btn-p:hover{background:transparent;color:var(--green);}
-    .btn-g{background:transparent;color:var(--text);border:1px solid var(--border);}
-    .btn-g:hover{border-color:var(--green);color:var(--green);}
+    .btn-p{background:linear-gradient(90deg,var(--green),var(--cyan));color:var(--bg);border:none;font-weight:700;}
+    .btn-p:hover{opacity:.85;transform:translateY(-1px);}
+    .btn-g{background:transparent;color:var(--text);border:1px solid rgba(56,189,248,.25);}
+    .btn-g:hover{border-color:var(--cyan);color:var(--cyan);}
     .hero-scroll{position:absolute;bottom:2.5rem;left:3rem;display:flex;align-items:center;gap:.8rem;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
     .hero-scroll::before{content:'';display:block;width:36px;height:1px;background:var(--muted);}
 
     /* STATS */
-    .stats{display:grid;grid-template-columns:repeat(4,1fr);background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-    .stat{padding:2rem 2.5rem;border-right:1px solid var(--border);}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);background:var(--surface);border-top:1px solid rgba(56,189,248,.12);border-bottom:1px solid rgba(56,189,248,.12);}
+    .stat{padding:2rem 2.5rem;border-right:1px solid rgba(56,189,248,.1);}
     .stat:last-child{border-right:none;}
-    .stat-n{font-family:var(--font-head);font-size:2.2rem;font-weight:800;color:var(--green);line-height:1;}
+    .stat-n{font-family:var(--font-head);font-size:2.2rem;font-weight:800;background:linear-gradient(90deg,var(--green),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;}
     .stat-l{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:.4rem;}
 
     /* SOLUTIONS */
@@ -169,14 +195,13 @@
     .cinfo strong{color:var(--text);display:block;margin-bottom:.3rem;font-family:var(--font-head);}
 
     /* FOOTER */
-    footer{padding:2rem 3rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.62rem;color:var(--muted);letter-spacing:.08em;}
-    footer strong{color:var(--green);}
+    footer{padding:2rem 3rem;border-top:1px solid rgba(56,189,248,.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.62rem;color:var(--muted);letter-spacing:.08em;}
+    footer strong{background:linear-gradient(90deg,var(--green),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
     .fl{display:flex;gap:1.5rem;}
     .fl a{color:var(--muted);text-decoration:none;transition:color .2s;}
-    .fl a:hover{color:var(--green);}
+    .fl a:hover{color:var(--cyan);}
 
-    /* LIVE ANIMATIONS */
-    .anim-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:.5rem;}
+    .anim-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;margin-top:.5rem;}
     .anim-wrap{display:flex;flex-direction:column;gap:.8rem;}
     .anim-label{display:flex;align-items:center;gap:.8rem;}
     .anim-label .al-badge{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;padding:.25rem .7rem;border-radius:2px;}
@@ -184,16 +209,106 @@
     .anim-title{font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:.3rem;}
     .anim-desc{font-size:.72rem;color:var(--muted);line-height:1.8;margin-bottom:.8rem;}
     .anim-frame{border:1px solid var(--border);border-radius:6px;overflow:hidden;background:var(--surface);position:relative;}
-    .anim-frame iframe{width:100%;height:540px;border:none;display:block;}
+    .anim-frame iframe{width:100%;height:500px;border:none;display:block;}
     .anim-frame .frame-bar{display:flex;align-items:center;justify-content:space-between;padding:.55rem 1rem;border-bottom:1px solid var(--border);background:var(--surface2);}
     .frame-bar-left{display:flex;align-items:center;gap:.6rem;font-size:.6rem;color:var(--muted);letter-spacing:.08em;}
-    .frame-bar-right a{font-size:.6rem;color:var(--green);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,232,122,.3);padding:.2rem .6rem;border-radius:2px;transition:all .2s;}
-    .frame-bar-right a:hover{background:var(--green);color:var(--bg);}
+    .frame-bar-right a{font-size:.6rem;color:var(--cyan);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,212,255,.25);padding:.2rem .6rem;border-radius:2px;transition:all .2s;}
+    .frame-bar-right a:hover{background:var(--cyan);color:var(--bg);}
     .anim-features{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem;}
     .af{font-size:.6rem;padding:.2rem .6rem;border:1px solid var(--border);border-radius:2px;color:var(--muted);}
-    @media(max-width:1100px){.fi{grid-template-columns:1fr;gap:3rem;}.cgrid{grid-template-columns:1fr;}.sol-lay{grid-template-columns:1fr;}.anim-grid{grid-template-columns:1fr;}}
+    /* SECURITY TRUST BAR */
+    .trust-bar{display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap;padding:.9rem 3rem;background:rgba(0,212,255,.04);border-bottom:1px solid rgba(0,212,255,.1);}
+    .trust-item{display:flex;align-items:center;gap:.5rem;font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;}
+    .trust-icon{width:16px;height:16px;display:flex;align-items:center;justify-content:center;border-radius:50%;flex-shrink:0;}
+    .ti-green{background:rgba(0,255,136,.15);color:var(--green);}
+    .ti-blue{background:rgba(56,189,248,.15);color:var(--blue);}
+    .ti-purple{background:rgba(167,139,250,.15);color:var(--purple);}
+    .ti-gold{background:rgba(251,191,36,.15);color:var(--gold);}
+
+    /* EU AI ACT SECTION */
+    #euaiact{padding:6rem 3rem;background:linear-gradient(135deg,rgba(6,14,26,.98) 0%,rgba(10,22,40,.98) 100%);border-top:1px solid rgba(0,212,255,.1);position:relative;overflow:hidden;}
+    #euaiact::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(167,139,250,.05) 0%,transparent 70%);pointer-events:none;}
+    #euaiact::after{content:'';position:absolute;bottom:-100px;left:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(0,212,255,.04) 0%,transparent 70%);pointer-events:none;}
+    .euai-header{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-bottom:3rem;}
+    .euai-intro p{font-size:.78rem;color:var(--muted);line-height:1.9;margin-top:1rem;max-width:52ch;}
+    .euai-badge-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem;}
+    .euai-badge{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;padding:.35rem .9rem;border-radius:2px;display:flex;align-items:center;gap:.4rem;}
+    .euai-badge.b-green{background:rgba(0,255,136,.08);color:var(--green);border:1px solid rgba(0,255,136,.25);}
+    .euai-badge.b-blue{background:rgba(56,189,248,.08);color:var(--blue);border:1px solid rgba(56,189,248,.25);}
+    .euai-badge.b-purple{background:rgba(167,139,250,.08);color:var(--purple);border:1px solid rgba(167,139,250,.25);}
+    .euai-badge.b-gold{background:rgba(251,191,36,.08);color:var(--gold);border:1px solid rgba(251,191,36,.25);}
+    .euai-score{background:var(--surface);border:1px solid rgba(0,212,255,.15);border-radius:6px;padding:1.8rem;}
+    .euai-score-title{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:1.2rem;}
+    .score-row{display:flex;align-items:center;gap:1rem;margin-bottom:.8rem;}
+    .score-label{font-size:.65rem;color:var(--muted);min-width:160px;flex-shrink:0;}
+    .score-bar{flex:1;height:5px;background:rgba(255,255,255,.05);border-radius:3px;overflow:hidden;}
+    .score-fill{height:100%;border-radius:3px;transition:width 1s ease;}
+    .score-val{font-family:var(--font-head);font-size:.8rem;font-weight:700;min-width:40px;text-align:right;}
+    .euai-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+    .euai-card{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:1.6rem;position:relative;overflow:hidden;transition:border-color .3s;}
+    .euai-card:hover{border-color:rgba(0,212,255,.3);}
+    .euai-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+    .euai-card.c-green::before{background:linear-gradient(90deg,var(--green),transparent);}
+    .euai-card.c-blue::before{background:linear-gradient(90deg,var(--blue),transparent);}
+    .euai-card.c-purple::before{background:linear-gradient(90deg,var(--purple),transparent);}
+    .euai-card.c-gold::before{background:linear-gradient(90deg,var(--gold),transparent);}
+    .euai-card.c-cyan::before{background:linear-gradient(90deg,var(--cyan),transparent);}
+    .euai-card.c-red::before{background:linear-gradient(90deg,var(--red),transparent);}
+    .euai-card-icon{font-size:1.4rem;margin-bottom:.8rem;}
+    .euai-card-label{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem;}
+    .euai-card-title{font-family:var(--font-head);font-size:.95rem;font-weight:700;margin-bottom:.7rem;}
+    .euai-card-desc{font-size:.7rem;color:var(--muted);line-height:1.8;}
+    .euai-card-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.9rem;}
+    .euai-tag{font-size:.55rem;padding:.18rem .5rem;border-radius:2px;border:1px solid var(--border);color:var(--muted);}
+    .euai-bottom{margin-top:3rem;padding:2rem;background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.1);border-radius:6px;display:flex;gap:3rem;align-items:center;flex-wrap:wrap;}
+    .euai-bottom-text{flex:1;min-width:280px;}
+    .euai-bottom-text h3{font-family:var(--font-head);font-size:1.1rem;font-weight:700;margin-bottom:.6rem;}
+    .euai-bottom-text p{font-size:.75rem;color:var(--muted);line-height:1.9;}
+    .euai-compliance-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;min-width:280px;}
+    .comp-item{display:flex;align-items:center;gap:.6rem;font-size:.65rem;color:var(--text);padding:.5rem .7rem;background:var(--surface);border:1px solid var(--border);border-radius:3px;}
+    .comp-check{color:var(--green);font-size:.8rem;flex-shrink:0;}
+    @media(max-width:1000px){.euai-header{grid-template-columns:1fr;}.euai-grid{grid-template-columns:repeat(2,1fr);}.euai-bottom{flex-direction:column;}}
+    @media(max-width:600px){.euai-grid{grid-template-columns:1fr;}.trust-bar{gap:1rem;}.euai-compliance-grid{grid-template-columns:1fr;}}
+    @media(max-width:1100px){.fi{grid-template-columns:1fr;gap:3rem;}.cgrid{grid-template-columns:1fr;}.sol-lay{grid-template-columns:1fr;}}
+    @media(max-width:768px){.anim-grid{grid-template-columns:1fr;}}
     @media(max-width:900px){.lgrid{grid-template-columns:repeat(2,1fr);}.stats{grid-template-columns:repeat(2,1fr);}.stat:nth-child(2){border-right:none;}.pi{grid-template-columns:1fr;}nav{padding:1rem 1.5rem;}section{padding-left:1.5rem!important;padding-right:1.5rem!important;}.hero{padding:7rem 1.5rem 4rem;}}
     @media(max-width:600px){.lgrid{grid-template-columns:1fr;}.stats{grid-template-columns:1fr;}.stat{border-right:none;border-bottom:1px solid var(--border);}.nav-links{display:none;}footer{flex-direction:column;text-align:center;}.fstats{grid-template-columns:repeat(2,1fr);}.sol-tabs{flex-direction:column;}.sol-tab{border-right:none;border-bottom:1px solid var(--border);}}
+  
+
+    /* DASHBOARDS */
+    .dash-wrapper{background:var(--surface);border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+    .dash-header{padding:1.2rem 1.5rem;border-bottom:1px solid var(--border);background:var(--surface2);}
+    .dash-title-row{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.8rem;}
+    .kpi-strip{display:grid;grid-template-columns:repeat(6,1fr);border-bottom:1px solid var(--border);}
+    .kpi-card{padding:1rem 1.2rem;border-right:1px solid var(--border);position:relative;}
+    .kpi-card:last-child{border-right:none;}
+    .kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+    .kpi-green::before{background:var(--green);} .kpi-blue::before{background:var(--blue);}
+    .kpi-purple::before{background:var(--purple);} .kpi-gold::before{background:var(--gold);}
+    .kpi-orange::before{background:var(--orange);} .kpi-cyan::before{background:var(--cyan);}
+    .kpi-red::before{background:var(--red);}
+    .kpi-label{font-size:.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.3rem;}
+    .kpi-val{font-family:var(--font-head);font-size:1.3rem;font-weight:800;color:var(--text);line-height:1;}
+    .kpi-delta{font-size:.6rem;margin-top:.25rem;}
+    .kpi-up{color:var(--green);} .kpi-down{color:var(--orange);}
+    .dash-charts{display:flex;gap:0;border-bottom:1px solid var(--border);}
+    .dash-chart-card{padding:1rem 1.2rem;border-right:1px solid var(--border);min-width:0;}
+    .dash-chart-card:last-child{border-right:none;}
+    .dcc-label{font-size:.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.6rem;}
+    .layer-status-grid{display:grid;grid-template-columns:repeat(6,1fr);}
+    .ls-card{padding:.8rem 1rem;border-right:1px solid var(--border);display:flex;flex-direction:column;gap:.25rem;position:relative;}
+    .ls-card:last-child{border-right:none;}
+    .ls-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;opacity:.4;}
+    .ls-green::before{background:var(--green);} .ls-blue::before{background:var(--blue);}
+    .ls-purple::before{background:var(--purple);} .ls-gold::before{background:var(--gold);}
+    .ls-orange::before{background:var(--orange);} .ls-cyan::before{background:var(--cyan);}
+    .ls-red::before{background:var(--red);}
+    .ls-icon{font-size:.9rem;}
+    .ls-name{font-size:.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
+    .ls-val{font-size:.65rem;color:var(--text);}
+    @media(max-width:1100px){.kpi-strip{grid-template-columns:repeat(3,1fr);}.layer-status-grid{grid-template-columns:repeat(3,1fr);}.dash-charts{flex-wrap:wrap;}.kpi-card:nth-child(3){border-right:none;}.kpi-card:nth-child(4){border-top:1px solid var(--border);}}
+    @media(max-width:700px){.kpi-strip{grid-template-columns:repeat(2,1fr);}.layer-status-grid{grid-template-columns:repeat(2,1fr);}}
+
   </style>
 </head>
 <body>
@@ -211,23 +326,37 @@
     <li><a href="#layers">Architecture</a></li>
     <li><a href="#founder">Founder</a></li>
     <li><a href="#collab">UiS</a></li>
+    <li><a href="#euaiact" style="color:var(--purple);">EU AI Act</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#solutions" onclick="setTimeout(()=>{showSol('s4',document.querySelectorAll('.sol-tab')[3])},100)" style="color:var(--green);">Live Demos</a></li>
   </ul>
   <a href="#contact" class="nav-cta">Get in Touch</a>
 </nav>
 
+<!-- SECURITY TRUST BAR -->
+<div class="trust-bar" role="complementary" aria-label="Security and compliance certifications">
+  <div class="trust-item"><div class="trust-icon ti-green">✓</div>EU AI Act Compliant</div>
+  <div class="trust-item"><div class="trust-icon ti-blue">✓</div>Zero Trust Architecture</div>
+  <div class="trust-item"><div class="trust-icon ti-blue">✓</div>FIPS 140-2 Level 3</div>
+  <div class="trust-item"><div class="trust-icon ti-purple">✓</div>GDPR · EU Data Sovereignty</div>
+  <div class="trust-item"><div class="trust-icon ti-gold">✓</div>ISO 27001 Aligned</div>
+  <div class="trust-item"><div class="trust-icon ti-green">✓</div>OCI Oslo Region · Norway</div>
+  <div class="trust-item"><div class="trust-icon ti-blue">✓</div>NIS2 Ready</div>
+</div>
+
 <section class="hero">
   <div class="hero-grid"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-eye">Ablny Technologies AS · Norway · Est. 2024</div>
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
+  <div class="hero-glow hero-glow-3"></div>
+  <div class="hero-eye">Ablny Technologies AS · Norway · AI &amp; Digital Solutions · Est. 2024</div>
   <h1>Energy.<br/><em>Reimagined</em><br/>for a Net-Zero<br/>Future.</h1>
-  <p class="hero-desc">Three integrated platforms — AI-enabled green energy & bioprocess digital twins, sovereign zero trust cloud on OCI, and carbon market intelligence — architected for Norway's net-zero transition and built to scale globally.</p>
+  <p class="hero-desc">Three integrated platforms — AI-enabled green energy &amp; bioprocess digital twins, sovereign zero trust cloud on OCI, and carbon market intelligence — architected for Norway's net-zero transition and built to scale globally.</p>
   <div class="chips">
     <span class="chip g">Digital Twins</span><span class="chip g">Carbon Markets</span><span class="chip g">AI Optimization</span>
-    <span class="chip b">Sovereign Cloud · OCI</span><span class="chip b">Zero Trust Security</span>
-    <span class="chip o">Bioprocess R&D</span><span class="chip o">EU ETS Integration</span>
-    <span class="chip">V2G / EV Systems</span><span class="chip">UiS Research Partnership</span><span class="chip">Nordic Energy Markets</span>
+    <span class="chip b">Sovereign Cloud · OCI</span><span class="chip b">Zero Trust Security</span><span class="chip b">EPCIC</span>
+    <span class="chip o">Bioprocess R&amp;D</span><span class="chip o">EU ETS Integration</span><span class="chip o">ERP Delivery</span>
+    <span class="chip p">V2G / EV Systems</span><span class="chip p">UiS Research Partnership</span><span class="chip p">Nordic Energy Markets</span>
   </div>
   <div class="hero-ctas">
     <a href="#solutions" class="btn btn-p">Explore Solutions</a>
@@ -236,7 +365,7 @@
   <div class="hero-scroll">Scroll to explore</div>
 </section>
 
-<div class="stats">
+<div class="stats" role="region" aria-label="Platform statistics">
   <div class="stat"><div class="stat-n">3</div><div class="stat-l">Flagship Platforms</div></div>
   <div class="stat"><div class="stat-n">25+</div><div class="stat-l">Years Delivery</div></div>
   <div class="stat"><div class="stat-n">6+</div><div class="stat-l">EU H2020 Projects</div></div>
@@ -251,19 +380,19 @@
     <p>From AI-powered energy digital twins to sovereign cloud security and bioprocess intelligence — each platform is field-tested, research-validated, and built for regulated, mission-critical environments.</p>
   </div>
 
-  <div class="sol-tabs">
-    <button class="sol-tab active" onclick="showSol('s1',this)"><span class="tab-n">01</span>AI Bioprocess & Energy Platform</button>
-    <button class="sol-tab" onclick="showSol('s2',this)"><span class="tab-n">02</span>Sovereign Zero Trust Cloud · OCI</button>
-    <button class="sol-tab" onclick="showSol('s3',this)"><span class="tab-n">03</span>UiS Integration · Carbon Market Engine</button>
-    <button class="sol-tab" onclick="showSol('s4',this)"><span class="tab-n">04</span>Live Process Animations</button>
+  <div class="sol-tabs" role="tablist" aria-label="Platform solutions">
+    <button class="sol-tab active" role="tab" aria-selected="true" aria-controls="s1" id="tab-s1" tabindex="0" onclick="showSol('s1',this)"><span class="tab-n">01</span>AI Bioprocess &amp; Energy Platform</button>
+    <button class="sol-tab" role="tab" aria-selected="false" aria-controls="s2" id="tab-s2" tabindex="-1" onclick="showSol('s2',this)"><span class="tab-n">02</span>Sovereign Zero Trust Cloud · OCI</button>
+    <button class="sol-tab" role="tab" aria-selected="false" aria-controls="s3" id="tab-s3" tabindex="-1" onclick="showSol('s3',this)"><span class="tab-n">03</span>UiS Integration · Carbon Market Engine</button>
+    <button class="sol-tab" role="tab" aria-selected="false" aria-controls="s4" id="tab-s4" tabindex="-1" onclick="showSol('s4',this)"><span class="tab-n">04</span>Live Process Animations</button>
   </div>
 
-  <!-- S1 -->
-  <div class="sol-panel active" id="s1">
+  <!-- S1: AI BIOPROCESS & ENERGY PLATFORM -->
+  <div class="sol-panel active" id="s1" role="tabpanel" aria-labelledby="tab-s1">
     <div class="sol-lay">
       <div>
         <span class="sol-badge badge-g">Green Energy · AI · Carbon</span>
-        <div class="sol-t">AI-Enabled Green Energy & Bioprocess Platform</div>
+        <div class="sol-t">AI-Enabled Green Energy &amp; Bioprocess Platform</div>
         <div class="sol-d">A closed-loop, nine-layer platform integrating ML optimization, cloud digital twins, bioprocess lab systems, energy edge infrastructure, LCA engines, and carbon market intelligence. Designed for Norway's industrial sector — connected to Nordic electricity markets, Statnett, Elhub, and the EU ETS carbon registry.</div>
         <div class="sol-hl">
           <div class="sol-h">Cloud Digital Twin with multi-agent optimization and what-if scenario planning</div>
@@ -274,21 +403,95 @@
           <div class="sol-h">GenAI Operations Assistant with RAG knowledge base and natural language queries</div>
         </div>
         <div class="sol-tags"><span class="stag">Digital Twin</span><span class="stag">EU ETS</span><span class="stag">Nordic Markets</span><span class="stag">Statnett/Elhub</span><span class="stag">LCA</span><span class="stag">V2G</span><span class="stag">SCADA/MQTT</span><span class="stag">RL Optimization</span></div>
-        <div class="callout" style="background:var(--green-dim);border:1px solid rgba(0,232,122,.2);">
-          <div class="callout-label" style="color:var(--green);">✦ Research Results & Dashboard Outputs</div>
+        <div class="callout" style="background:var(--green-dim);border:1px solid rgba(0,232,122,.2);margin-top:1rem;">
+          <div class="callout-label" style="color:var(--green);">✦ Research Results &amp; Dashboard Outputs</div>
           Platform validated with digital twin outputs, production dashboards, and supply-side data snapshots — actively shared with University of Stavanger supporting MSc thesis research pipeline for Fall 2026.
         </div>
       </div>
       <div class="sol-img-box">
         <button class="expand-btn" onclick="openLB('bioprocess-platform.png',event)">⤢ Expand</button>
         <img src="bioprocess-platform.png" alt="AI-Enabled Bioprocess Platform — Ablny × UiS" onclick="openLB('bioprocess-platform.png',event)"/>
-        <div class="img-cap">PART 2 — AI-Enabled Bioprocess Platform: Architecture & UiS Integration · March 2026 · Click image to expand</div>
+        <div class="img-cap">PART 2 — AI-Enabled Bioprocess Platform: Architecture &amp; UiS Integration · March 2026 · Click to expand</div>
       </div>
+    </div>
+
+  <!-- BIOPROCESS LIVE DASHBOARD -->
+  <div class="dash-wrapper" style="margin-top:2.5rem;">
+    <div class="dash-header">
+      <div class="dash-title-row">
+        <div>
+          <div class="sl" style="margin-bottom:.3rem;">Live Platform Dashboard</div>
+          <h3 style="font-family:var(--font-head);font-size:1.1rem;font-weight:700;">AI Bioprocess &amp; Energy — Operational Intelligence</h3>
+        </div>
+        <div style="display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;">
+          <div style="display:flex;align-items:center;gap:.4rem;font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;"><div style="width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.4s infinite;"></div>All Systems Live</div>
+          <span id="bio-ts" style="font-size:.6rem;color:var(--muted);font-family:var(--font-body);"></span>
+        </div>
+      </div>
+    </div>
+    <!-- KPI STRIP -->
+    <div class="kpi-strip">
+      <div class="kpi-card kpi-green">
+        <div class="kpi-label">Carbon Price (EU ETS)</div>
+        <div class="kpi-val" id="bio-k1">€64.20</div>
+        <div class="kpi-delta kpi-up" id="bio-d1">↑ +1.4%</div>
+      </div>
+      <div class="kpi-card kpi-blue">
+        <div class="kpi-label">Yield Efficiency</div>
+        <div class="kpi-val" id="bio-k2">91.3%</div>
+        <div class="kpi-delta kpi-up" id="bio-d2">↑ +0.8%</div>
+      </div>
+      <div class="kpi-card kpi-purple">
+        <div class="kpi-label">Energy Use (kWh/kg)</div>
+        <div class="kpi-val" id="bio-k3">2.41</div>
+        <div class="kpi-delta kpi-down" id="bio-d3">↓ -3.2%</div>
+      </div>
+      <div class="kpi-card kpi-gold">
+        <div class="kpi-label">GHG Intensity (g CO₂/MJ)</div>
+        <div class="kpi-val" id="bio-k4">18.7</div>
+        <div class="kpi-delta kpi-up" id="bio-d4">↓ -2.1%</div>
+      </div>
+      <div class="kpi-card kpi-orange">
+        <div class="kpi-label">ROI Forecast (12m)</div>
+        <div class="kpi-val" id="bio-k5">24.6%</div>
+        <div class="kpi-delta kpi-up" id="bio-d5">↑ +1.1%</div>
+      </div>
+      <div class="kpi-card kpi-cyan">
+        <div class="kpi-label">DT Sync Cycles</div>
+        <div class="kpi-val" id="bio-k6">1,847</div>
+        <div class="kpi-delta kpi-up" id="bio-d6">↑ live</div>
+      </div>
+    </div>
+    <!-- CHARTS ROW -->
+    <div class="dash-charts">
+      <div class="dash-chart-card" style="flex:2;">
+        <div class="dcc-label">Carbon Price Trend (EU ETS) — 24h · €/tCO₂</div>
+        <canvas id="c-carbon" height="90"></canvas>
+      </div>
+      <div class="dash-chart-card" style="flex:1.2;">
+        <div class="dcc-label">Yield vs Energy Efficiency · %</div>
+        <canvas id="c-yield" height="90"></canvas>
+      </div>
+      <div class="dash-chart-card" style="flex:1.2;">
+        <div class="dcc-label">Scope 1–3 GHG Breakdown · g CO₂eq/MJ</div>
+        <canvas id="c-ghg" height="90"></canvas>
+      </div>
+    </div>
+    <!-- LAYER STATUS -->
+    <div class="layer-status-grid">
+      <div class="ls-card ls-green"><div class="ls-icon">🧬</div><div class="ls-name">Bioprocess Lab</div><div class="ls-val" id="ls-bp">Batch #47 — Active</div></div>
+      <div class="ls-card ls-blue"><div class="ls-icon">🤖</div><div class="ls-name">ML Optimizer</div><div class="ls-val" id="ls-ml">RL Loop — Converged</div></div>
+      <div class="ls-card ls-purple"><div class="ls-icon">☁</div><div class="ls-name">Cloud Digital Twin</div><div class="ls-val" id="ls-dt">Sync: 98.7% fidelity</div></div>
+      <div class="ls-card ls-cyan"><div class="ls-icon">📡</div><div class="ls-name">Edge / SCADA</div><div class="ls-val" id="ls-sc">32 sensors · nominal</div></div>
+      <div class="ls-card ls-gold"><div class="ls-icon">⚡</div><div class="ls-name">Energy Edge (V2G)</div><div class="ls-val" id="ls-v2g">Grid: 94.1 kW net</div></div>
+      <div class="ls-card ls-orange"><div class="ls-icon">📊</div><div class="ls-name">Carbon Market Engine</div><div class="ls-val" id="ls-cm">EU ETS: €64.20 live</div></div>
     </div>
   </div>
 
-  <!-- S2 -->
-  <div class="sol-panel" id="s2">
+  </div>
+
+  <!-- S2: SOVEREIGN ZERO TRUST CLOUD -->
+  <div class="sol-panel" id="s2" role="tabpanel" aria-labelledby="tab-s2" hidden>
     <div class="sol-lay">
       <div>
         <span class="sol-badge badge-b">Sovereign Cloud · OCI · Zero Trust</span>
@@ -297,134 +500,270 @@
         <div class="sol-hl">
           <div class="sol-h">Zero Trust OT/IT bridge protecting digital twin processes from external tampering</div>
           <div class="sol-h">Data sovereignty by design — private service endpoints, FIPS 140-2 Level 3 customer-managed encryption</div>
-          <div class="sol-h">Policy-as-Code & IaC with drift detection and full regulatory auditability</div>
+          <div class="sol-h">Policy-as-Code &amp; IaC with drift detection and full regulatory auditability</div>
           <div class="sol-h">Hardened OKE Kubernetes runtime with continuous threat detection and admission controllers</div>
           <div class="sol-h">Immutable build pipelines with container image vulnerability scanning and artifact signing</div>
           <div class="sol-h">Sovereign data gravity — sensitive reservoir and injection data within Norwegian jurisdiction (OCI Oslo)</div>
         </div>
         <div class="sol-tags"><span class="stag">OCI</span><span class="stag">Zero Trust</span><span class="stag">FIPS 140-2 L3</span><span class="stag">OKE/Kubernetes</span><span class="stag">IAM/MFA</span><span class="stag">Policy-as-Code</span><span class="stag">CCUS Security</span><span class="stag">SIEM</span></div>
-        <div class="callout" style="background:rgba(74,144,226,.06);border:1px solid rgba(74,144,226,.25);">
+        <div class="callout" style="background:rgba(74,144,226,.06);border:1px solid rgba(74,144,226,.25);margin-top:1rem;">
           <div class="callout-label" style="color:#4A90E2;">✦ LinkedIn Publication · December 2025 · 1,265 Newsletter Subscribers</div>
-          Received expert validation from senior cloud architects: <em style="color:var(--text);">"The architecture choices are very intentional — especially around identity boundaries, supply-chain controls, and data sovereignty. Structure, not individual tools, is what makes Zero Trust real."</em>
-        </div>
-        <div class="callout" style="background:var(--surface2);border:1px solid var(--border);margin-top:.8rem;">
-          <div class="callout-label" style="color:var(--green);">Strategic Impact for Energy Majors & CCUS</div>
-          Aligned with the "Always Safe" mandate — treating every sensor as a verified identity to eliminate unauthorized process changes in critical Net Zero infrastructure. Applicable to Equinor-scale CCUS deployments.
+          Expert validation from senior cloud architects: <em style="color:var(--text);">"The architecture choices are very intentional — especially around identity boundaries, supply-chain controls, and data sovereignty. Structure, not individual tools, is what makes Zero Trust real."</em>
         </div>
       </div>
       <div class="sol-img-box">
         <button class="expand-btn" onclick="openLB('oci-zero-trust.png',event)">⤢ Expand</button>
         <img src="oci-zero-trust.png" alt="Sovereign Zero Trust Cloud — OCI Edition · Ablny Technologies AS" onclick="openLB('oci-zero-trust.png',event)"/>
-        <div class="img-cap">Sovereign Zero Trust Cloud · OCI Edition · 6-Layer Architecture · Click image to expand</div>
+        <div class="img-cap">Sovereign Zero Trust Cloud · OCI Edition · 6-Layer Architecture · Click to expand</div>
       </div>
+    </div>
+
+  <!-- OCI SECURITY DASHBOARD -->
+  <div class="dash-wrapper" style="margin-top:2.5rem;">
+    <div class="dash-header">
+      <div class="dash-title-row">
+        <div>
+          <div class="sl" style="margin-bottom:.3rem;">Live Security Dashboard</div>
+          <h3 style="font-family:var(--font-head);font-size:1.1rem;font-weight:700;">Sovereign Zero Trust Cloud — OCI Security Operations</h3>
+        </div>
+        <div style="display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;">
+          <div style="display:flex;align-items:center;gap:.4rem;font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;"><div style="width:6px;height:6px;border-radius:50%;background:var(--cyan);animation:pulse 1.4s infinite;"></div>All 6 Layers Nominal</div>
+          <div style="font-size:.6rem;padding:.2rem .6rem;background:rgba(0,255,136,.1);border:1px solid rgba(0,255,136,.25);border-radius:2px;color:var(--green);">Threat Level: LOW</div>
+          <span id="oci-ts" style="font-size:.6rem;color:var(--muted);"></span>
+        </div>
+      </div>
+    </div>
+    <!-- KPI STRIP -->
+    <div class="kpi-strip">
+      <div class="kpi-card kpi-red">
+        <div class="kpi-label">Threats Blocked (24h)</div>
+        <div class="kpi-val" id="oci-k1">247</div>
+        <div class="kpi-delta kpi-up" id="oci-d1">↑ active</div>
+      </div>
+      <div class="kpi-card kpi-green">
+        <div class="kpi-label">Identities Verified</div>
+        <div class="kpi-val" id="oci-k2">18,431</div>
+        <div class="kpi-delta kpi-up" id="oci-d2">↑ live</div>
+      </div>
+      <div class="kpi-card kpi-blue">
+        <div class="kpi-label">CVEs Scanned</div>
+        <div class="kpi-val" id="oci-k3">9,204</div>
+        <div class="kpi-delta" id="oci-d3" style="color:var(--green);">0 CRITICAL</div>
+      </div>
+      <div class="kpi-card kpi-gold">
+        <div class="kpi-label">Audit Events (24h)</div>
+        <div class="kpi-val" id="oci-k4">84,190</div>
+        <div class="kpi-delta kpi-up" id="oci-d4">↑ SIEM logged</div>
+      </div>
+      <div class="kpi-card kpi-purple">
+        <div class="kpi-label">Compliance Score</div>
+        <div class="kpi-val" id="oci-k5">99.8%</div>
+        <div class="kpi-delta" id="oci-d5" style="color:var(--green);">ISO 27001</div>
+      </div>
+      <div class="kpi-card kpi-cyan">
+        <div class="kpi-label">FIPS Decrypt Ops</div>
+        <div class="kpi-val" id="oci-k6">4,812</div>
+        <div class="kpi-delta kpi-up" id="oci-d6">↑ HSM L3</div>
+      </div>
+    </div>
+    <!-- CHARTS ROW -->
+    <div class="dash-charts">
+      <div class="dash-chart-card" style="flex:2;">
+        <div class="dcc-label">Threats Blocked per Hour — 24h rolling</div>
+        <canvas id="c-threats" height="90"></canvas>
+      </div>
+      <div class="dash-chart-card" style="flex:1.2;">
+        <div class="dcc-label">6-Layer Health Status</div>
+        <canvas id="c-layers" height="90"></canvas>
+      </div>
+      <div class="dash-chart-card" style="flex:1.2;">
+        <div class="dcc-label">Identity Verification Volume · 24h</div>
+        <canvas id="c-ids" height="90"></canvas>
+      </div>
+    </div>
+    <!-- LAYER STATUS -->
+    <div class="layer-status-grid">
+      <div class="ls-card ls-red"><div class="ls-icon">🏛</div><div class="ls-name">L1 Governance &amp; Identity</div><div class="ls-val" id="ls-l1">MFA: 100% enforced</div></div>
+      <div class="ls-card ls-blue"><div class="ls-icon">🔗</div><div class="ls-name">L2 Secure Supply Chain</div><div class="ls-val" id="ls-l2">Pipeline: signed &amp; clean</div></div>
+      <div class="ls-card ls-cyan"><div class="ls-icon">🌐</div><div class="ls-name">L3 Network Perimeter</div><div class="ls-val" id="ls-l3">Firewall: 0 breaches</div></div>
+      <div class="ls-card ls-green"><div class="ls-icon">🔐</div><div class="ls-name">L4 Data Sovereignty</div><div class="ls-val" id="ls-l4">Keys: FIPS L3 · secure</div></div>
+      <div class="ls-card ls-purple"><div class="ls-icon">☸</div><div class="ls-name">L5 Runtime Defense (OKE)</div><div class="ls-val" id="ls-l5">OPA: all pods admitted</div></div>
+      <div class="ls-card ls-gold"><div class="ls-icon">📋</div><div class="ls-name">L6 Audit &amp; Observability</div><div class="ls-val" id="ls-l6">SIEM: 84k events/24h</div></div>
     </div>
   </div>
 
-  <!-- S3 -->
-  <div class="sol-panel" id="s3">
+  </div>
+
+  <!-- S3: UiS / CARBON MARKET -->
+  <div class="sol-panel" id="s3" role="tabpanel" aria-labelledby="tab-s3" hidden>
     <div class="sol-lay">
       <div>
         <span class="sol-badge badge-o">Bioprocess · UiS · Carbon Markets</span>
-        <div class="sol-t">AI Bioprocess Platform — UiS Integration & Carbon Market Engine</div>
-        <div class="sol-d">A detailed seven-layer platform view showing the full Ablny Technologies AS × University of Stavanger integration — covering the AI & Digital Twin layer, Bioprocess Lab & Working Prototype, Energy Edge, Sustainability & LCA, and the Carbon Market & AI Pricing Engine. Produced with great dashboard results and validated digital twin outputs.</div>
+        <div class="sol-t">AI Bioprocess Platform — UiS Integration &amp; Carbon Market Engine</div>
+        <div class="sol-d">A detailed seven-layer platform view showing the full Ablny Technologies AS × University of Stavanger integration — covering the AI &amp; Digital Twin layer, Bioprocess Lab &amp; Working Prototype, Energy Edge, Sustainability &amp; LCA, and the Carbon Market &amp; AI Pricing Engine. Produced with great dashboard results and validated digital twin outputs.</div>
         <div class="sol-hl">
           <div class="sol-h">GenAI Assistant with RAG on patents, operator decision support, and market signal interpretation</div>
           <div class="sol-h">ML Training Engine for yield/energy optimization feeding the AI Carbon Pricing Engine</div>
           <div class="sol-h">Edge Digital Twin Runtime with real-time simulation and autonomous control loops</div>
-          <div class="sol-h">IoT Sensors & SCADA: temperature, flow, dissolved O₂, pH, biomass, safety & compliance monitoring</div>
-          <div class="sol-h">Carbon Market & AI Pricing Engine with EU ETS registry integration and live market data</div>
-          <div class="sol-h">Prototype Output Layer: shareable graphs, dashboards, yield projections — no confidential IP exposed</div>
+          <div class="sol-h">IoT Sensors &amp; SCADA: temperature, flow, dissolved O₂, pH, biomass, safety &amp; compliance monitoring</div>
+          <div class="sol-h">Carbon Market &amp; AI Pricing Engine with EU ETS registry integration and live market data</div>
           <div class="sol-h">MSc Thesis Loop: carbon credits as asset class, AI vs traditional pricing, ESG investor behaviour</div>
         </div>
         <div class="sol-tags"><span class="stag">Bioprocess Modeler</span><span class="stag">Fermentation</span><span class="stag">SCADA/IoT</span><span class="stag">Carbon Credits</span><span class="stag">EU ETS Live</span><span class="stag">LCA Dashboard</span><span class="stag">UiS Thesis 2026</span><span class="stag">ESG Reports</span></div>
-        <div class="callout" style="background:rgba(255,165,0,.06);border:1px solid rgba(255,165,0,.25);">
+        <div class="callout" style="background:rgba(255,165,0,.06);border:1px solid rgba(255,165,0,.25);margin-top:1rem;">
           <div class="callout-label" style="color:#FFA500;">✦ Shared with University of Stavanger · March 2026</div>
           Platform architecture, digital twin outputs, carbon pricing models, and production dashboards shared with UiS faculty. Actively supporting Fall 2026 MSc thesis intake across carbon economics and AI pricing research streams.
         </div>
       </div>
       <div class="sol-img-box">
         <button class="expand-btn" onclick="openLB('bioprocess-platform.png',event)">⤢ Expand</button>
-        <img src="bioprocess-platform.png" alt="UiS Integration & Carbon Market Engine · Ablny Technologies AS" onclick="openLB('bioprocess-platform.png',event)"/>
-        <div class="img-cap">Platform Architecture & UiS Integration · Part 2 of 2 · March 2026 · Click image to expand</div>
+        <img src="bioprocess-platform.png" alt="UiS Integration &amp; Carbon Market Engine · Ablny Technologies AS" onclick="openLB('bioprocess-platform.png',event)"/>
+        <div class="img-cap">Platform Architecture &amp; UiS Integration · Part 2 of 2 · March 2026 · Click to expand</div>
       </div>
+    </div>
+
+  <!-- CARBON MARKET DASHBOARD -->
+  <div class="dash-wrapper" style="margin-top:2.5rem;">
+    <div class="dash-header">
+      <div class="dash-title-row">
+        <div>
+          <div class="sl" style="margin-bottom:.3rem;">Live Carbon Market Dashboard</div>
+          <h3 style="font-family:var(--font-head);font-size:1.1rem;font-weight:700;">Carbon Market Engine &amp; UiS Research Platform — Live Metrics</h3>
+        </div>
+        <div style="display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;">
+          <div style="display:flex;align-items:center;gap:.4rem;font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;"><div style="width:6px;height:6px;border-radius:50%;background:var(--orange);animation:pulse 1.4s infinite;"></div>EU ETS Live Feed</div>
+          <div style="font-size:.6rem;padding:.2rem .6rem;background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.25);border-radius:2px;color:var(--purple);">UiS Thesis Loop: Active</div>
+          <span id="carb-ts" style="font-size:.6rem;color:var(--muted);"></span>
+        </div>
+      </div>
+    </div>
+    <!-- KPI STRIP -->
+    <div class="kpi-strip">
+      <div class="kpi-card kpi-orange">
+        <div class="kpi-label">EUA Spot Price (EU ETS)</div>
+        <div class="kpi-val" id="carb-k1">€64.20</div>
+        <div class="kpi-delta kpi-up" id="carb-d1">↑ +1.4% 24h</div>
+      </div>
+      <div class="kpi-card kpi-green">
+        <div class="kpi-label">Carbon Credits Modelled</div>
+        <div class="kpi-val" id="carb-k2">14,200 t</div>
+        <div class="kpi-delta kpi-up" id="carb-d2">↑ pipeline</div>
+      </div>
+      <div class="kpi-card kpi-blue">
+        <div class="kpi-label">AI vs Trad. Pricing Δ</div>
+        <div class="kpi-val" id="carb-k3">-8.3%</div>
+        <div class="kpi-delta" id="carb-d3" style="color:var(--green);">AI outperforms</div>
+      </div>
+      <div class="kpi-card kpi-purple">
+        <div class="kpi-label">MSc Thesis Topics</div>
+        <div class="kpi-val" id="carb-k4">7</div>
+        <div class="kpi-delta" id="carb-d4" style="color:var(--purple);">Fall 2026 intake</div>
+      </div>
+      <div class="kpi-card kpi-gold">
+        <div class="kpi-label">ESG Score (Platform)</div>
+        <div class="kpi-val" id="carb-k5">A+</div>
+        <div class="kpi-delta" id="carb-d5" style="color:var(--gold);">ISO 14064 aligned</div>
+      </div>
+      <div class="kpi-card kpi-cyan">
+        <div class="kpi-label">Scope 1+2+3 Offset %</div>
+        <div class="kpi-val" id="carb-k6">67.4%</div>
+        <div class="kpi-delta kpi-up" id="carb-d6">↑ +4.2% QoQ</div>
+      </div>
+    </div>
+    <!-- CHARTS ROW -->
+    <div class="dash-charts">
+      <div class="dash-chart-card" style="flex:2;">
+        <div class="dcc-label">EUA Carbon Price — AI Forecast vs Market · €/tCO₂</div>
+        <canvas id="c-eua" height="90"></canvas>
+      </div>
+      <div class="dash-chart-card" style="flex:1.2;">
+        <div class="dcc-label">Scope 1 / 2 / 3 GHG Breakdown</div>
+        <canvas id="c-scope" height="90"></canvas>
+      </div>
+      <div class="dash-chart-card" style="flex:1.2;">
+        <div class="dcc-label">Research Pipeline — UiS Thesis Topics</div>
+        <canvas id="c-uis" height="90"></canvas>
+      </div>
+    </div>
+    <!-- LAYER STATUS -->
+    <div class="layer-status-grid">
+      <div class="ls-card ls-orange"><div class="ls-icon">📈</div><div class="ls-name">EU ETS Registry</div><div class="ls-val" id="ls-ets">Live feed connected</div></div>
+      <div class="ls-card ls-green"><div class="ls-icon">🌿</div><div class="ls-name">LCA Engine</div><div class="ls-val" id="ls-lca">Scope 1–3: computed</div></div>
+      <div class="ls-card ls-blue"><div class="ls-icon">⚡</div><div class="ls-name">Nordic Day-Ahead</div><div class="ls-val" id="ls-nord">Spot: 48.2 €/MWh</div></div>
+      <div class="ls-card ls-purple"><div class="ls-icon">🎓</div><div class="ls-name">UiS Research Loop</div><div class="ls-val" id="ls-uis2">7 topics · F2026</div></div>
+      <div class="ls-card ls-cyan"><div class="ls-icon">🤖</div><div class="ls-name">AI Pricing Model</div><div class="ls-val" id="ls-ai">RMSE: 0.82 €</div></div>
+      <div class="ls-card ls-gold"><div class="ls-icon">🏆</div><div class="ls-name">ESG Compliance</div><div class="ls-val" id="ls-esg">A+ · ISO 14064</div></div>
     </div>
   </div>
 
+  </div>
+
   <!-- S4: LIVE ANIMATIONS -->
-  <div class="sol-panel" id="s4">
+  <div class="sol-panel" id="s4" role="tabpanel" aria-labelledby="tab-s4" hidden>
     <div style="margin-bottom:2rem;">
       <span class="sol-badge badge-g" style="margin-bottom:.8rem;display:inline-block;">Live · Interactive · Streaming</span>
       <div class="sol-t">Process Architecture — Live Streaming Visualizations</div>
-      <div class="sol-d">Both platform architectures brought to life as real-time animated process flows. Watch data move through every layer — sensors to cloud, bioprocess to carbon markets. Each animation streams continuously, reacts to interactive scenario triggers, and shows live metrics updating in real time.</div>
+      <div class="sol-d">All three platform architectures brought to life as real-time animated process flows. Watch data move through every layer — sensors to cloud, bioprocess to carbon markets, and Zero Trust security operations. Each animation streams continuously, reacts to interactive scenario triggers, and shows live metrics updating in real time.</div>
     </div>
-
     <div class="anim-grid">
-
-      <!-- BIOPROCESS ANIMATION -->
       <div class="anim-wrap">
         <div>
           <div class="anim-label">
             <div class="al-dot" style="background:var(--green);"></div>
             <span class="al-badge badge-g">AI · Digital Twin · Carbon · LCA</span>
           </div>
-          <div class="anim-title">AI-Enabled Green Energy & Bioprocess Platform</div>
-          <div class="anim-desc">Closed-loop 11-step cycle streaming live across all 6 layers — Strategy & Economics, AI & Digital Twin, Bioprocess Lab, Edge/Facility, Sustainability & LCA, and Market & Policy Signals. Carbon price, yield prediction, GHG and ROI metrics update in real time.</div>
-          <div class="anim-features">
-            <span class="af">⚡ Carbon Spike Scenario</span>
-            <span class="af">🧪 New Batch Init</span>
-            <span class="af">📈 ROI Forecast Mode</span>
-            <span class="af">🎓 UiS Research Sync</span>
-            <span class="af">Live Metrics</span>
-            <span class="af">Event Log</span>
-          </div>
+          <div class="anim-title">AI-Enabled Green Energy &amp; Bioprocess Platform</div>
+          <div class="anim-desc">11-step closed-loop cycle across 6 layers: Strategy &amp; Economics, AI &amp; Digital Twin, Bioprocess Lab, Edge/Facility, Sustainability &amp; LCA, Market &amp; Policy.</div>
+          <div class="anim-features"><span class="af">⚡ Carbon Spike</span><span class="af">🧪 New Batch</span><span class="af">📈 ROI Forecast</span><span class="af">🎓 UiS Sync</span></div>
         </div>
         <div class="anim-frame">
           <div class="frame-bar">
-            <div class="frame-bar-left">
-              <div style="width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.4s infinite;flex-shrink:0;"></div>
-              Bioprocess Platform · Closed-Loop Live Stream
-            </div>
-            <div class="frame-bar-right"><a href="bioprocess-animation.html" target="_blank">⤢ Full Screen</a></div>
+            <div class="frame-bar-left"><div style="width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.4s infinite;flex-shrink:0;"></div>Bioprocess Platform · Closed-Loop Live Stream</div>
+            <div class="frame-bar-right"><a href="bioprocess-animation.html" target="_blank" rel="noopener noreferrer">⤢ Full Screen</a></div>
           </div>
-          <iframe src="bioprocess-animation.html" title="AI-Enabled Green Energy & Bioprocess Platform — Live Process Animation" loading="lazy" allow="autoplay"></iframe>
+          <iframe src="bioprocess-animation.html" sandbox="allow-scripts allow-same-origin" title="AI-Enabled Green Energy &amp; Bioprocess Platform — Live Process Animation" loading="lazy"></iframe>
         </div>
       </div>
-
-      <!-- EPCIC ANIMATION -->
       <div class="anim-wrap">
         <div>
           <div class="anim-label">
-            <div class="al-dot" style="background:#4A90E2;"></div>
-            <span class="al-badge badge-b">EPCIC · Edge AI · Azure · Zero Trust</span>
+            <div class="al-dot" style="background:var(--cyan);"></div>
+            <span class="al-badge" style="background:rgba(0,212,255,.1);color:var(--cyan);border:1px solid rgba(0,212,255,.3);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;padding:.25rem .7rem;border-radius:2px;">OCI · Zero Trust · FIPS · Sovereign</span>
           </div>
-          <div class="anim-title">EPCIC Edge AI Architecture — Part 1 of 2</div>
-          <div class="anim-desc">Edge Device & Gateway Layer streaming live — from raw sensor telemetry through AlexNet CNN quantized inference, TPM attestation, Azure IoT Edge routing, and secure cloud offload via Split Inference Manager. Confidence score and split-inference trigger shown in real time.</div>
-          <div class="anim-features">
-            <span class="af">⚡ Anomaly Alert Trigger</span>
-            <span class="af">☁ Force Cloud Offload</span>
-            <span class="af">Confidence Scoring</span>
-            <span class="af">TPM Attestation</span>
-            <span class="af">Live Inference Log</span>
-            <span class="af">Split Inference Path</span>
-          </div>
+          <div class="anim-title">Sovereign Zero Trust Cloud — OCI Edition</div>
+          <div class="anim-desc">6-layer Zero Trust security stream: Governance &amp; Identity, Supply Chain, Network Perimeter, Data Sovereignty, OKE Runtime Defense, Audit &amp; Observability.</div>
+          <div class="anim-features"><span class="af">🔴 Simulate Attack</span><span class="af">📋 Audit</span><span class="af">🚀 Deploy Pipeline</span><span class="af">FIPS 140-2 L3</span></div>
         </div>
         <div class="anim-frame">
           <div class="frame-bar">
-            <div class="frame-bar-left">
-              <div style="width:6px;height:6px;border-radius:50%;background:#4A90E2;animation:pulse 1.4s infinite;flex-shrink:0;"></div>
-              EPCIC Edge AI · Part 1 of 2 · Edge &amp; Gateway Layer
-            </div>
-            <div class="frame-bar-right"><a href="epcic-animation.html" target="_blank">⤢ Full Screen</a></div>
+            <div class="frame-bar-left"><div style="width:6px;height:6px;border-radius:50%;background:var(--cyan);animation:pulse 1.4s infinite;flex-shrink:0;"></div>Zero Trust Cloud · 6-Layer Security Stream</div>
+            <div class="frame-bar-right"><a href="oci-animation.html" target="_blank" rel="noopener noreferrer" style="border-color:rgba(0,212,255,.3);color:var(--cyan);">⤢ Full Screen</a></div>
           </div>
-          <iframe src="epcic-animation.html" title="EPCIC Edge AI Architecture — Live Process Animation" loading="lazy" allow="autoplay"></iframe>
+          <iframe src="oci-animation.html" sandbox="allow-scripts allow-same-origin" title="Sovereign Zero Trust Cloud OCI — Live Security Animation" loading="lazy"></iframe>
         </div>
       </div>
-
+      <div class="anim-wrap">
+        <div>
+          <div class="anim-label">
+            <div class="al-dot" style="background:var(--blue);"></div>
+            <span class="al-badge badge-b">EPCIC · Edge AI · Azure · Zero Trust</span>
+          </div>
+          <div class="anim-title">EPCIC Edge AI Architecture — Part 1 of 2</div>
+          <div class="anim-desc">Edge Device &amp; Gateway Layer: sensor telemetry through AlexNet CNN quantized inference, TPM attestation, Azure IoT Edge routing, Split Inference Manager.</div>
+          <div class="anim-features"><span class="af">⚡ Anomaly Alert</span><span class="af">☁ Cloud Offload</span><span class="af">TPM Attestation</span><span class="af">Split Inference</span></div>
+        </div>
+        <div class="anim-frame">
+          <div class="frame-bar">
+            <div class="frame-bar-left"><div style="width:6px;height:6px;border-radius:50%;background:var(--blue);animation:pulse 1.4s infinite;flex-shrink:0;"></div>EPCIC Edge AI · Part 1 of 2 · Edge &amp; Gateway Layer</div>
+            <div class="frame-bar-right"><a href="epcic-animation.html" target="_blank" rel="noopener noreferrer">⤢ Full Screen</a></div>
+          </div>
+          <iframe src="epcic-animation.html" sandbox="allow-scripts allow-same-origin" title="EPCIC Edge AI Architecture — Live Process Animation" loading="lazy"></iframe>
+        </div>
+      </div>
     </div>
-
     <div class="callout" style="background:var(--green-dim);border:1px solid rgba(0,232,122,.2);margin-top:2rem;">
       <div class="callout-label" style="color:var(--green);">✦ Interactive Demonstrations · Deploy Anywhere</div>
-      Both animations are standalone HTML files — embed them as iframes, link to them as full-screen demos, or present in client meetings as live walkthroughs. Each has scenario triggers, speed controls, and live event logs. Contact <strong>products@ablnytech.com</strong> to discuss platform integration.
+      All animations are standalone HTML files — embed as iframes, link as full-screen demos, or present in client meetings. Each has scenario triggers, speed controls, and live event logs. Contact <strong>products@ablnytech.com</strong> to discuss platform integration.
     </div>
   </div>
 
@@ -434,14 +773,14 @@
 <section id="platform" style="padding:6rem 3rem;background:var(--surface);border-top:1px solid var(--border);">
   <div class="ph">
     <div><div class="sl">Core Architecture · v3.0</div><h2 class="st">AI-Enabled Integrated<br/>Energy Platform</h2></div>
-    <div class="pm">Ablny Technologies AS × University of Stavanger<br/>Author: John O. (Femi) Abe — CEO, Founder & CTO<br/>Version 3.0 — Norway Scaling</div>
+    <div class="pm">Ablny Technologies AS × University of Stavanger<br/>Author: John O. (Femi) Abe — CEO, Founder &amp; CTO<br/>Version 3.0 — Norway Scaling</div>
   </div>
   <div class="leg">
-    <div class="li"><div class="ld" style="background:#4A90E2"></div>Strategy & Economics</div>
-    <div class="li"><div class="ld" style="background:#00e87a"></div>AI & Digital Twin</div>
-    <div class="li"><div class="ld" style="background:#aaa"></div>Bioprocess R&D</div>
+    <div class="li"><div class="ld" style="background:#4A90E2"></div>Strategy &amp; Economics</div>
+    <div class="li"><div class="ld" style="background:#00e87a"></div>AI &amp; Digital Twin</div>
+    <div class="li"><div class="ld" style="background:#aaa"></div>Bioprocess R&amp;D</div>
     <div class="li"><div class="ld" style="background:#e87a7a"></div>Energy Edge</div>
-    <div class="li"><div class="ld" style="background:#FFD700"></div>Sustainability & LCA</div>
+    <div class="li"><div class="ld" style="background:#FFD700"></div>Sustainability &amp; LCA</div>
     <div class="li"><div class="ld" style="background:#FFA500"></div>Carbon Markets</div>
     <div class="li"><div class="ld" style="background:#C8A2C8"></div>UiS Collaboration</div>
     <div class="li"><div class="ld" style="background:#B0E0E6"></div>Shared Value</div>
@@ -523,7 +862,7 @@
 <!-- LAYERS -->
 <section id="layers" style="padding:6rem 3rem;">
   <div class="sl">Nine-Layer Architecture</div>
-  <h2 class="st">Platform Components<br/>& Capabilities</h2>
+  <h2 class="st">Platform Components<br/>&amp; Capabilities</h2>
   <div class="lgrid">
     <div class="lc l1"><div class="lnum">Layer 01</div><div class="ltitle" style="color:#4A90E2">Strategy & Economics</div><div class="nd"><div class="nt">Investors & Business Owners</div><div class="ntags"><span class="tg">ROI/IRR</span><span class="tg">Carbon Asset Monetization</span><span class="tg">ESG KPIs</span></div></div><div class="nd"><div class="nt">Techno-Economic Model</div><div class="ntags"><span class="tg">Scenario Simulation</span><span class="tg">AI Forecasting</span><span class="tg">Energy Flex</span></div></div></div>
     <div class="lc l2"><div class="lnum">Layer 02</div><div class="ltitle" style="color:#00e87a">AI & Digital Twin</div><div class="nd"><div class="nt">ML Optimization Engine</div><div class="ntags"><span class="tg">Yield Prediction</span><span class="tg">RL Control</span><span class="tg">Drift Monitoring</span></div></div><div class="nd"><div class="nt">Cloud Digital Twin</div><div class="ntags"><span class="tg">What-If</span><span class="tg">Multi-Agent</span><span class="tg">Simulation</span></div></div><div class="nd"><div class="nt">GenAI Operations Assistant</div><div class="ntags"><span class="tg">NL Queries</span><span class="tg">RAG Patents</span></div></div></div>
@@ -599,53 +938,421 @@
   </div>
 </section>
 
+<!-- EU AI ACT & SECURITY COMPLIANCE -->
+<section id="euaiact">
+  <div style="position:relative;z-index:1;">
+    <div class="euai-header">
+      <div class="euai-intro">
+        <div class="sl">Governance & Trust</div>
+        <h2 class="st">EU AI Act Compliant.<br/>Inherently Secure.</h2>
+        <p>Every platform we build is designed from first principles to meet the EU AI Act, GDPR, EU data sovereignty mandates, and Zero Trust security requirements. Security and compliance are not add-ons — they are embedded in the architecture, the supply chain, the runtime, and the audit trail.</p>
+        <div class="euai-badge-row">
+          <span class="euai-badge b-green">✓ EU AI Act — High-Risk Ready</span>
+          <span class="euai-badge b-blue">✓ GDPR Article 25 — Privacy by Design</span>
+          <span class="euai-badge b-purple">✓ Zero Trust — NIST SP 800-207</span>
+          <span class="euai-badge b-gold">✓ ISO 27001 Aligned</span>
+          <span class="euai-badge b-blue">✓ FIPS 140-2 Level 3 HSM</span>
+          <span class="euai-badge b-green">✓ NIS2 Directive Ready</span>
+          <span class="euai-badge b-purple">✓ SOC 2 Type II Aligned</span>
+          <span class="euai-badge b-gold">✓ OCI Oslo Region — Norwegian Data Residency</span>
+        </div>
+      </div>
+      <div class="euai-score">
+        <div class="euai-score-title">Platform Compliance Score</div>
+        <div class="score-row">
+          <div class="score-label">EU AI Act Readiness</div>
+          <div class="score-bar"><div class="score-fill" style="width:94%;background:linear-gradient(90deg,var(--green),var(--cyan));"></div></div>
+          <div class="score-val" style="color:var(--green);">94%</div>
+        </div>
+        <div class="score-row">
+          <div class="score-label">Zero Trust Coverage</div>
+          <div class="score-bar"><div class="score-fill" style="width:98%;background:linear-gradient(90deg,var(--cyan),var(--blue));"></div></div>
+          <div class="score-val" style="color:var(--cyan);">98%</div>
+        </div>
+        <div class="score-row">
+          <div class="score-label">GDPR / Data Sovereignty</div>
+          <div class="score-bar"><div class="score-fill" style="width:100%;background:linear-gradient(90deg,var(--blue),var(--purple));"></div></div>
+          <div class="score-val" style="color:var(--blue);">100%</div>
+        </div>
+        <div class="score-row">
+          <div class="score-label">Supply Chain Security</div>
+          <div class="score-bar"><div class="score-fill" style="width:96%;background:linear-gradient(90deg,var(--purple),var(--gold));"></div></div>
+          <div class="score-val" style="color:var(--purple);">96%</div>
+        </div>
+        <div class="score-row">
+          <div class="score-label">Audit & Observability</div>
+          <div class="score-bar"><div class="score-fill" style="width:99%;background:linear-gradient(90deg,var(--gold),var(--green));"></div></div>
+          <div class="score-val" style="color:var(--gold);">99%</div>
+        </div>
+        <div class="score-row">
+          <div class="score-label">NIS2 Directive</div>
+          <div class="score-bar"><div class="score-fill" style="width:91%;background:linear-gradient(90deg,var(--green),var(--cyan));"></div></div>
+          <div class="score-val" style="color:var(--green);">91%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6-CARD GRID -->
+    <div class="euai-grid">
+
+      <div class="euai-card c-purple">
+        <div class="euai-card-icon">⚖️</div>
+        <div class="euai-card-label">EU AI Act · Regulation (EU) 2024/1689</div>
+        <div class="euai-card-title">AI Act Compliance Framework</div>
+        <div class="euai-card-desc">Our AI systems operating in energy infrastructure, bioprocess control, and carbon markets are classified and governed under the EU AI Act's high-risk framework. Every model includes a conformity assessment, technical documentation, human oversight mechanisms, and logging of all AI-generated decisions. Prohibited practices (subliminal manipulation, social scoring) are explicitly excluded by design.</div>
+        <div class="euai-card-tags">
+          <span class="euai-tag">High-Risk Category</span>
+          <span class="euai-tag">Conformity Assessment</span>
+          <span class="euai-tag">Human Oversight</span>
+          <span class="euai-tag">AI Decision Logging</span>
+          <span class="euai-tag">Technical Documentation</span>
+        </div>
+      </div>
+
+      <div class="euai-card c-blue">
+        <div class="euai-card-icon">🔒</div>
+        <div class="euai-card-label">Zero Trust · NIST SP 800-207</div>
+        <div class="euai-card-title">Zero Trust Architecture — No Implicit Trust</div>
+        <div class="euai-card-desc">Every identity, device, and workload is verified continuously — never trusted implicitly regardless of network location. Our OCI Sovereign Cloud enforces Zero Trust across 6 layers: governance & identity, secure supply chain, network perimeter, data sovereignty, OKE runtime defense, and full audit observability. Every sensor is a verified identity. Every API call carries a cryptographically signed token.</div>
+        <div class="euai-card-tags">
+          <span class="euai-tag">NIST SP 800-207</span>
+          <span class="euai-tag">mTLS Everywhere</span>
+          <span class="euai-tag">Continuous Verification</span>
+          <span class="euai-tag">Micro-Segmentation</span>
+          <span class="euai-tag">OCI OKE Hardened</span>
+        </div>
+      </div>
+
+      <div class="euai-card c-green">
+        <div class="euai-card-icon">🛡️</div>
+        <div class="euai-card-label">GDPR · EU Data Sovereignty</div>
+        <div class="euai-card-title">Privacy by Design & Data Residency</div>
+        <div class="euai-card-desc">All data processing architectures implement GDPR Article 25 privacy by design and by default. Sensitive operational and personal data is hosted exclusively in OCI Oslo Region (Norway) — never leaving EU/EEA jurisdiction. Customer-managed encryption keys (FIPS 140-2 Level 3 HSM) ensure no cloud provider, including Oracle, can access your data. Data minimisation enforced at every layer.</div>
+        <div class="euai-card-tags">
+          <span class="euai-tag">GDPR Article 25</span>
+          <span class="euai-tag">OCI Oslo Region</span>
+          <span class="euai-tag">Customer-Managed Keys</span>
+          <span class="euai-tag">FIPS 140-2 L3</span>
+          <span class="euai-tag">Data Minimisation</span>
+        </div>
+      </div>
+
+      <div class="euai-card c-gold">
+        <div class="euai-card-icon">📋</div>
+        <div class="euai-card-label">NIS2 · Critical Infrastructure</div>
+        <div class="euai-card-title">NIS2 Directive — Energy Sector Compliance</div>
+        <div class="euai-card-desc">Energy platforms and EPCIC systems fall within NIS2's critical infrastructure scope. Our architecture enforces mandatory incident detection and reporting pipelines, supply chain security controls, board-level accountability structures, and multi-factor authentication across all privileged access. Cloud Guard provides continuous threat detection with automated responder recipes for sub-minute incident response.</div>
+        <div class="euai-card-tags">
+          <span class="euai-tag">NIS2 Directive</span>
+          <span class="euai-tag">Incident Reporting</span>
+          <span class="euai-tag">Supply Chain Controls</span>
+          <span class="euai-tag">MFA Everywhere</span>
+          <span class="euai-tag">Cloud Guard SIEM</span>
+        </div>
+      </div>
+
+      <div class="euai-card c-cyan">
+        <div class="euai-card-icon">🔗</div>
+        <div class="euai-card-label">AI Explainability · Transparency</div>
+        <div class="euai-card-title">Explainable AI & Human Oversight</div>
+        <div class="euai-card-desc">All ML models deployed in critical decision paths include explainability mechanisms — SHAP values for yield predictions, confidence intervals on digital twin outputs, and audit-ready decision logs for carbon pricing algorithms. Human operators can override any AI recommendation at any time. The GenAI Assistant is clearly labelled as AI-generated and never makes autonomous binding decisions without human confirmation.</div>
+        <div class="euai-card-tags">
+          <span class="euai-tag">SHAP Explainability</span>
+          <span class="euai-tag">Confidence Intervals</span>
+          <span class="euai-tag">Human Override</span>
+          <span class="euai-tag">AI Labelling</span>
+          <span class="euai-tag">Decision Audit Log</span>
+        </div>
+      </div>
+
+      <div class="euai-card c-red">
+        <div class="euai-card-icon">🔐</div>
+        <div class="euai-card-label">Supply Chain · Secure DevOps</div>
+        <div class="euai-card-title">Secure Software Supply Chain</div>
+        <div class="euai-card-desc">Every software artefact is built through immutable pipelines with cryptographic signing (cosign), continuous vulnerability scanning, and SBOM (Software Bill of Materials) generation. No unsigned container image ever runs in production. IaC drift detection prevents configuration from deviating from reviewed state. Policy-as-Code enforces compliance automatically at deploy time — not as a post-hoc audit.</div>
+        <div class="euai-card-tags">
+          <span class="euai-tag">SBOM Generation</span>
+          <span class="euai-tag">Cosign Artifact Signing</span>
+          <span class="euai-tag">IaC Drift Detection</span>
+          <span class="euai-tag">Policy-as-Code</span>
+          <span class="euai-tag">CVE Blocking</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- COMPLIANCE SUMMARY -->
+    <div class="euai-bottom">
+      <div class="euai-bottom-text">
+        <h3>Built for Regulated Environments</h3>
+        <p>Our platforms are designed for the most demanding regulated sectors — energy infrastructure, EPCIC, bioprocess manufacturing, fintech, and government. Every architectural decision is made with compliance as a first-class constraint, not an afterthought. We do not build shadow IT — we build auditable, certifiable, sovereign systems that stand up to regulatory scrutiny.</p>
+      </div>
+      <div class="euai-compliance-grid">
+        <div class="comp-item"><span class="comp-check">✓</span>EU AI Act 2024/1689</div>
+        <div class="comp-item"><span class="comp-check">✓</span>GDPR Article 25</div>
+        <div class="comp-item"><span class="comp-check">✓</span>NIS2 Directive</div>
+        <div class="comp-item"><span class="comp-check">✓</span>FIPS 140-2 Level 3</div>
+        <div class="comp-item"><span class="comp-check">✓</span>ISO 27001 Aligned</div>
+        <div class="comp-item"><span class="comp-check">✓</span>SOC 2 Type II Aligned</div>
+        <div class="comp-item"><span class="comp-check">✓</span>NIST SP 800-207</div>
+        <div class="comp-item"><span class="comp-check">✓</span>OCI Oslo · EU Residency</div>
+        <div class="comp-item"><span class="comp-check">✓</span>Zero Trust Architecture</div>
+        <div class="comp-item"><span class="comp-check">✓</span>SBOM · Supply Chain</div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact" style="padding:6rem 3rem;background:var(--surface);border-top:1px solid var(--border);">
   <div class="sl">Get in Touch</div>
   <h2 class="st">Let's Build the<br/>Energy Future Together</h2>
   <div class="cgrid">
     <div class="cc">
-      <div class="ccl">Products & Solutions</div>
-      <div class="cct">Platform & Product Enquiries</div>
+      <div class="ccl">Products &amp; Solutions</div>
+      <div class="cct">Platform &amp; Product Enquiries</div>
       <div class="ccd">Platform demos, partnership discussions, solution architecture consultations, commercial opportunities, and OCI/Zero Trust implementations.</div>
-      <a href="/cdn-cgi/l/email-protection#cbbbb9a4afbea8bfb88baaa9a7a5b2bfaea8a3e5a8a4a6" class="cemail"><span style="color:var(--green);">✉</span><span class="__cf_email__" data-cfemail="b9c9cbd6ddccdacdcaf9d8dbd5d7c0cddcdad197dad6d4">[email&#160;protected]</span></a>
+      <a href="mailto:products@ablnytech.com" class="cemail"><span style="color:var(--green);">✉</span>products@ablnytech.com</a>
       <div class="cinfo"><strong>Ablny Technologies AS</strong>Norway · ablnytech.com<br/>AI Energy · Sovereign Cloud · Bioprocess · Carbon Markets</div>
     </div>
     <div class="cc">
-      <div class="ccl">General & Research</div>
-      <div class="cct">General & Research Enquiries</div>
+      <div class="ccl">General &amp; Research</div>
+      <div class="cct">General &amp; Research Enquiries</div>
       <div class="ccd">General information, media, academic research collaboration, investor relations, and UiS partnership enquiries.</div>
-      <a href="/cdn-cgi/l/email-protection#5f363139301f3e3d3331262b3a3c37713c3032" class="cemail"><span style="color:var(--green);">✉</span><span class="__cf_email__" data-cfemail="254c4b434a654447494b5c5140464d0b464a48">[email&#160;protected]</span></a>
-      <div class="cinfo"><strong>John 'Femi Abe — CEO, Founder & CTO</strong>Technology & Solution Architect<br/>ERP & Digital Platforms · AI-Enabled Solutions<br/>Energy, EPCIC & Industrial Assets · +47 99882710</div>
+      <a href="mailto:info@ablnytech.com" class="cemail"><span style="color:var(--green);">✉</span>info@ablnytech.com</a>
+      <div class="cinfo"><strong>John 'Femi Abe — CEO, Founder &amp; CTO</strong>Technology &amp; Solution Architect<br/>ERP &amp; Digital Platforms · AI-Enabled Solutions<br/>Energy, EPCIC &amp; Industrial Assets · +47 99882710</div>
     </div>
   </div>
 </section>
 
 <footer>
   <div>© 2025 <strong>Ablny Technologies AS</strong> · Norway · ablnytech.com</div>
-  <div class="fl"><a href="/cdn-cgi/l/email-protection#38484a575c4d5b4c4b78595a5456414c5d5b50165b5755"><span class="__cf_email__" data-cfemail="4232302d26372136310223202e2c3b3627212a6c212d2f">[email&#160;protected]</span></a><a href="/cdn-cgi/l/email-protection#3f565159507f5e5d5351464b5a5c57115c5052"><span class="__cf_email__" data-cfemail="95fcfbf3fad5f4f7f9fbece1f0f6fdbbf6faf8">[email&#160;protected]</span></a></div>
-  <div style="display:flex;align-items:center;gap:.6rem;"><span class="pulse" style="display:inline-block;width:6px;height:6px;background:var(--green);border-radius:50%;"></span>3 Platforms Active · v3.0</div>
+  <div class="fl">
+    <a href="mailto:products@ablnytech.com">products@ablnytech.com</a>
+    <a href="mailto:info@ablnytech.com">info@ablnytech.com</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:.6rem;"><span class="pulse" style="display:inline-block;width:6px;height:6px;background:var(--green);border-radius:50%;"></span>3 Platforms Active · v4.0 · EU AI Act Compliant</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
+/* ============================================================
+   ABLNY TECHNOLOGIES AS — Main JS · v4.0
+   - Zero duplicate functions
+   - ARIA-compliant tab navigation (WAI-ARIA 1.1)
+   - Secure lightbox with path allowlist
+   - postMessage guard
+   - Live dashboard animations (Chart.js)
+   ============================================================ */
+
+// ── TAB NAVIGATION ──────────────────────────────────────────
 function showSol(id, btn) {
-  document.querySelectorAll('.sol-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.sol-tab').forEach(b => b.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  btn.classList.add('active');
+  document.querySelectorAll('.sol-panel').forEach(p => {
+    p.classList.remove('active');
+    p.setAttribute('hidden', '');
+  });
+  document.querySelectorAll('.sol-tab').forEach(b => {
+    b.classList.remove('active');
+    b.setAttribute('aria-selected', 'false');
+    b.setAttribute('tabindex', '-1');
+  });
+  const panel = document.getElementById(id);
+  if (panel) { panel.classList.add('active'); panel.removeAttribute('hidden'); }
+  if (btn)  { btn.classList.add('active'); btn.setAttribute('aria-selected', 'true'); btn.setAttribute('tabindex', '0'); }
 }
+
+// ── LIGHTBOX ─────────────────────────────────────────────────
 function openLB(src, e) {
-  if(e) e.stopPropagation();
-  document.getElementById('lbox-img').src = src;
+  if (e) e.stopPropagation();
+  const allowed = /^[a-zA-Z0-9_\-]+\.(png|jpg|jpeg|webp|svg)$/;
+  const safe = allowed.test(src) ? src : '';
+  if (!safe) return;
+  document.getElementById('lbox-img').src = safe;
   document.getElementById('lbox').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 function closeLB() {
   document.getElementById('lbox').classList.remove('open');
+  document.getElementById('lbox-img').src = '';
   document.body.style.overflow = '';
 }
-document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLB(); });
+
+// ── KEYBOARD NAV (WCAG 2.1 / WAI-ARIA) ──────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  const tabList = document.querySelector('[role="tablist"]');
+  if (tabList) {
+    const tabs = Array.from(tabList.querySelectorAll('[role="tab"]'));
+    tabList.addEventListener('keydown', e => {
+      const idx = tabs.indexOf(document.activeElement);
+      if (idx === -1) return;
+      let next = -1;
+      if (e.key === 'ArrowRight') next = (idx + 1) % tabs.length;
+      if (e.key === 'ArrowLeft')  next = (idx - 1 + tabs.length) % tabs.length;
+      if (e.key === 'Home')       next = 0;
+      if (e.key === 'End')        next = tabs.length - 1;
+      if (next !== -1) { e.preventDefault(); tabs[next].focus(); tabs[next].click(); }
+    });
+  }
+  // Ensure inactive panels are hidden on load
+  document.querySelectorAll('.sol-panel:not(.active)').forEach(p => p.setAttribute('hidden', ''));
+
+  // ── DASHBOARDS ──────────────────────────────────────────────
+  initDashboards();
+});
+
+// ── POSTMESSAGE GUARD ────────────────────────────────────────
+window.addEventListener('message', e => {
+  if (e.origin !== window.location.origin) return;
+});
+
+// ── ESC KEY ──────────────────────────────────────────────────
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB(); });
+
+// ── DASHBOARD ENGINE ─────────────────────────────────────────
+function mkLabels(n, suffix) {
+  return Array.from({length: n}, (_, i) => (n - i) + suffix);
+}
+function randWalk(base, n, range) {
+  let v = base, arr = [];
+  for (let i = 0; i < n; i++) { v += (Math.random() - 0.48) * range; arr.push(+v.toFixed(2)); }
+  return arr;
+}
+function mkChart(id, type, labels, datasets, opts) {
+  const canvas = document.getElementById(id);
+  if (!canvas) return null;
+  return new Chart(canvas, {
+    type, data: {labels, datasets},
+    options: {
+      responsive: true, maintainAspectRatio: false, animation: {duration: 600},
+      plugins: {legend: {display: datasets.length > 1, labels: {color:'#4a7aaa', font: {family:'IBM Plex Mono', size:9}, boxWidth:10, padding:8}}, tooltip: {backgroundColor:'#0a1628', borderColor:'#0f2540', borderWidth:1, titleColor:'#e2f4ff', bodyColor:'#4a7aaa', titleFont:{family:'Syne',size:11}}},
+      scales: type !== 'doughnut' && type !== 'radar' ? {
+        x: {ticks: {color:'#4a7aaa', font:{family:'IBM Plex Mono', size:8}, maxRotation:0}, grid: {color:'rgba(15,37,64,.5)'}},
+        y: {ticks: {color:'#4a7aaa', font:{family:'IBM Plex Mono', size:8}}, grid: {color:'rgba(15,37,64,.5)'}}
+      } : undefined,
+      ...opts
+    }
+  });
+}
+
+let charts = {};
+let dashTimers = [];
+
+function initDashboards() {
+  if (typeof Chart === 'undefined') {
+    setTimeout(initDashboards, 300);
+    return;
+  }
+  Chart.defaults.color = '#4a7aaa';
+  Chart.defaults.font.family = 'IBM Plex Mono';
+
+  // ── BIOPROCESS DASHBOARD ────────────────────────────────────
+  const bioLabels = mkLabels(24, 'h');
+  charts.carbon = mkChart('c-carbon', 'line', bioLabels, [{
+    label:'EUA Price (€/tCO₂)', data: randWalk(62, 24, 1.5),
+    borderColor:'#00ff88', backgroundColor:'rgba(0,255,136,.06)', fill:true, tension:.4, pointRadius:0, borderWidth:1.5
+  }]);
+  charts.yield = mkChart('c-yield', 'line', bioLabels.slice(-12), [
+    {label:'Yield %', data: randWalk(91, 12, 0.8), borderColor:'#38bdf8', fill:false, tension:.4, pointRadius:0, borderWidth:1.5},
+    {label:'Energy Eff %', data: randWalk(87, 12, 1.1), borderColor:'#a78bfa', fill:false, tension:.4, pointRadius:0, borderWidth:1.5}
+  ]);
+  charts.ghg = mkChart('c-ghg', 'bar', ['Scope 1','Scope 2','Scope 3'], [{
+    data:[8.2, 5.1, 5.4], backgroundColor:['rgba(0,255,136,.7)','rgba(56,189,248,.7)','rgba(167,139,250,.7)'],
+    borderColor:['#00ff88','#38bdf8','#a78bfa'], borderWidth:1, borderRadius:3
+  }]);
+
+  // ── OCI DASHBOARD ────────────────────────────────────────────
+  charts.threats = mkChart('c-threats', 'line', mkLabels(24,'h'), [{
+    label:'Threats Blocked', data: randWalk(10, 24, 5).map(v => Math.max(0,Math.round(v))),
+    borderColor:'#f87171', backgroundColor:'rgba(248,113,113,.08)', fill:true, tension:.4, pointRadius:0, borderWidth:1.5
+  }]);
+  charts.layers = mkChart('c-layers', 'radar', ['L1 Identity','L2 Supply','L3 Network','L4 Data','L5 Runtime','L6 Audit'], [{
+    data:[99,97,98,100,96,99], borderColor:'#00d4ff', backgroundColor:'rgba(0,212,255,.08)', pointBackgroundColor:'#00d4ff', borderWidth:1.5
+  }]);
+  charts.ids = mkChart('c-ids', 'bar', mkLabels(12,'h'), [{
+    data: randWalk(750, 12, 120).map(v => Math.max(0,Math.round(v))),
+    backgroundColor:'rgba(56,189,248,.5)', borderColor:'#38bdf8', borderWidth:1, borderRadius:3
+  }]);
+
+  // ── CARBON DASHBOARD ─────────────────────────────────────────
+  const carbLabels = mkLabels(24,'h');
+  const marketData = randWalk(63, 24, 1.8);
+  const aiData = marketData.map((v,i) => +(v - 1.2 + Math.random()*0.6 - 0.3).toFixed(2));
+  charts.eua = mkChart('c-eua', 'line', carbLabels, [
+    {label:'Market Price', data: marketData, borderColor:'#fb923c', fill:false, tension:.4, pointRadius:0, borderWidth:1.5},
+    {label:'AI Forecast',  data: aiData,     borderColor:'#a78bfa', fill:false, tension:.4, pointRadius:0, borderWidth:1.5, borderDash:[4,3]}
+  ]);
+  charts.scope = mkChart('c-scope', 'doughnut', ['Scope 1','Scope 2','Scope 3'], [{
+    data:[8.2, 5.1, 5.4],
+    backgroundColor:['rgba(0,255,136,.7)','rgba(56,189,248,.7)','rgba(167,139,250,.7)'],
+    borderColor:['#00ff88','#38bdf8','#a78bfa'], borderWidth:1
+  }]);
+  charts.uis = mkChart('c-uis', 'bar', ['Carbon Econ','AI Pricing','ESG Inv','DT Models','LCA','EV/V2G','Market Struct'], [{
+    data:[2,2,1,1,1,1,1], backgroundColor:'rgba(167,139,250,.6)', borderColor:'#a78bfa', borderWidth:1, borderRadius:3
+  }]);
+
+  // ── TIMESTAMPS ───────────────────────────────────────────────
+  function updateTS() {
+    const ts = new Date().toUTCString().slice(0,25) + ' UTC';
+    ['bio-ts','oci-ts','carb-ts'].forEach(id => { const el = document.getElementById(id); if(el) el.textContent = ts; });
+  }
+  updateTS();
+
+  // ── LIVE KPI UPDATES ─────────────────────────────────────────
+  function tickBio() {
+    const price = (64 + (Math.random()-0.5)*2).toFixed(2);
+    const yield_ = (91 + (Math.random()-0.5)*1).toFixed(1);
+    const energy = (2.4 + (Math.random()-0.5)*0.1).toFixed(2);
+    const ghg = (18.5 + (Math.random()-0.5)*0.5).toFixed(1);
+    const roi = (24.5 + (Math.random()-0.5)*0.5).toFixed(1);
+    const dtc = parseInt(document.getElementById('bio-k6')?.textContent?.replace(/,/g,'')||1847) + Math.floor(Math.random()*5+1);
+    setKPI('bio-k1','€'+price); setKPI('bio-k2',yield_+'%'); setKPI('bio-k3',energy);
+    setKPI('bio-k4',ghg); setKPI('bio-k5',roi+'%'); setKPI('bio-k6',dtc.toLocaleString());
+    // Update carbon chart
+    if(charts.carbon) {
+      charts.carbon.data.datasets[0].data.push(+price);
+      charts.carbon.data.datasets[0].data.shift();
+      charts.carbon.update('none');
+    }
+  }
+  function tickOCI() {
+    const threats = parseInt(document.getElementById('oci-k1')?.textContent||247) + Math.floor(Math.random()*3);
+    const ids = parseInt(document.getElementById('oci-k2')?.textContent?.replace(/,/g,'')||18431) + Math.floor(Math.random()*20+5);
+    const cves = parseInt(document.getElementById('oci-k3')?.textContent?.replace(/,/g,'')||9204) + Math.floor(Math.random()*10);
+    const audit = parseInt(document.getElementById('oci-k4')?.textContent?.replace(/,/g,'')||84190) + Math.floor(Math.random()*50+20);
+    const fips = parseInt(document.getElementById('oci-k6')?.textContent?.replace(/,/g,'')||4812) + Math.floor(Math.random()*5+1);
+    setKPI('oci-k1',threats.toLocaleString()); setKPI('oci-k2',ids.toLocaleString());
+    setKPI('oci-k3',cves.toLocaleString()); setKPI('oci-k4',audit.toLocaleString());
+    setKPI('oci-k6',fips.toLocaleString());
+    if(charts.threats) {
+      charts.threats.data.datasets[0].data.push(Math.max(0,Math.round(5+(Math.random()-0.3)*8)));
+      charts.threats.data.datasets[0].data.shift();
+      charts.threats.update('none');
+    }
+  }
+  function tickCarb() {
+    const price = (64 + (Math.random()-0.5)*3).toFixed(2);
+    const offset = (67 + (Math.random()-0.5)*1).toFixed(1);
+    setKPI('carb-k1','€'+price); setKPI('carb-k6',offset+'%');
+    if(charts.eua) {
+      const ai = +(+price - 1.2 + Math.random()*0.6 - 0.3).toFixed(2);
+      charts.eua.data.datasets[0].data.push(+price);
+      charts.eua.data.datasets[0].data.shift();
+      charts.eua.data.datasets[1].data.push(ai);
+      charts.eua.data.datasets[1].data.shift();
+      charts.eua.update('none');
+    }
+    // Update carbon market layer status
+    setLS('ls-ets', 'EUA: €'+price+' · live');
+    setLS('ls-nord', 'Spot: '+(48 + (Math.random()-0.5)*4).toFixed(1)+' €/MWh');
+  }
+  function setKPI(id, val) { const el = document.getElementById(id); if(el) el.textContent = val; }
+  function setLS(id, val) { const el = document.getElementById(id); if(el) el.textContent = val; }
+
+  dashTimers.push(setInterval(tickBio,  2800));
+  dashTimers.push(setInterval(tickOCI, 3200));
+  dashTimers.push(setInterval(tickCarb, 3600));
+  dashTimers.push(setInterval(updateTS, 60000));
+}
 </script>
 </body>
 </html>
