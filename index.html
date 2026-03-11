@@ -8,30 +8,30 @@
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"/>
   <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()"/>
   <meta name="robots" content="index, follow"/>
-  <meta name="description" content="Ablny Technologies AS — AI-enabled green energy, bioprocess digital twins, sovereign OCI zero trust cloud, EPCIC, ERP and carbon market platforms. EU AI Act compliant. Norway."/>
-  <title>Ablny Technologies AS — AI Energy, Bioprocess &amp; Sovereign Cloud Platforms</title>
+  <meta name="description" content="Ablny Technologies AS — Norsk AI-teknologiselskap. AI-drevne plattformer for grønn energi, bioprocess, sovereign OCI zero trust sky og karbonmarked. Offisielt etablert i Norge, Stavanger. EU AI Act compliant. Org nr 936 326 609."/>
+  <title>Ablny Technologies AS — Norsk AI, Grønn Energi &amp; Sovereign Cloud · Stavanger, Norge</title>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet" crossorigin="anonymous"/>
   <link rel="canonical" href="https://ablnytech.com/"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous" defer></script>
   <style>
 
     :root{
-      --bg:#03080f;--surface:#060e1a;--surface2:#0a1628;--border:#0f2540;
-      --green:#00ff88;--green2:#00cc6a;--green-dim:#00ff8814;
-      --blue:#38bdf8;--blue2:#0ea5e9;--blue-dim:#38bdf810;
-      --cyan:#00d4ff;--purple:#a78bfa;--purple-dim:#a78bfa12;
-      --lilac:#C8A2C8;--red:#f87171;--gold:#fbbf24;--orange:#fb923c;--sky:#7dd3fc;
-      --text:#e2f4ff;--muted:#4a7aaa;
-      --accent1:#00ff88;--accent2:#38bdf8;--accent3:#a78bfa;
+      --bg:#020b14;--surface:#051120;--surface2:#081828;--border:#0d2845;
+      --green:#00ff99;--green2:#00e87a;--green-dim:#00ff9918;
+      --blue:#4dc9ff;--blue2:#22b4f0;--blue-dim:#4dc9ff14;
+      --cyan:#00eeff;--purple:#c084fc;--purple-dim:#c084fc14;
+      --lilac:#D4AAFF;--red:#ff6b6b;--gold:#ffd700;--orange:#ff9f43;--sky:#93d5fc;
+      --text:#eaf6ff;--muted:#5a8ab0;
+      --accent1:#00ff99;--accent2:#4dc9ff;--accent3:#c084fc;
       --font-head:'Syne',sans-serif;--font-body:'IBM Plex Mono',monospace;--font-serif:'Fraunces',serif;
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
     body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:14px;line-height:1.7;overflow-x:hidden;}
     /* Deep space grid */
-    body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(56,189,248,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.025) 1px,transparent 1px);background-size:52px 52px;pointer-events:none;z-index:0;}
-    /* Ambient glow */
-    body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 90% 50% at 80% 10%,rgba(167,139,250,.06) 0%,transparent 60%),radial-gradient(ellipse 70% 40% at 10% 80%,rgba(0,212,255,.05) 0%,transparent 60%);pointer-events:none;z-index:0;}
+    body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(77,201,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(77,201,255,.04) 1px,transparent 1px);background-size:52px 52px;pointer-events:none;z-index:0;}
+    /* Ambient glow - brighter */
+    body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 90% 50% at 80% 10%,rgba(192,132,252,.09) 0%,transparent 60%),radial-gradient(ellipse 70% 40% at 10% 80%,rgba(0,238,255,.08) 0%,transparent 60%),radial-gradient(ellipse 50% 30% at 50% 50%,rgba(0,255,153,.04) 0%,transparent 70%);pointer-events:none;z-index:0;}
     section{position:relative;z-index:1;}
     .sl{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--cyan);margin-bottom:.6rem;}
     .st{font-family:var(--font-head);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;}
@@ -54,9 +54,9 @@
     .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8rem 3rem 5rem;overflow:hidden;}
     .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(56,189,248,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.04) 1px,transparent 1px);background-size:55px 55px;mask-image:radial-gradient(ellipse 80% 70% at 50% 50%,black 20%,transparent 100%);}
     .hero-glow{position:absolute;pointer-events:none;}
-    .hero-glow-1{width:800px;height:800px;background:radial-gradient(circle,rgba(0,255,136,.07) 0%,transparent 65%);top:-10%;left:40%;transform:translateX(-50%);}
-    .hero-glow-2{width:600px;height:600px;background:radial-gradient(circle,rgba(167,139,250,.06) 0%,transparent 65%);top:20%;right:-10%;}
-    .hero-glow-3{width:500px;height:500px;background:radial-gradient(circle,rgba(0,212,255,.05) 0%,transparent 65%);bottom:5%;left:5%;}
+    .hero-glow-1{width:900px;height:900px;background:radial-gradient(circle,rgba(0,255,153,.10) 0%,transparent 65%);top:-10%;left:40%;transform:translateX(-50%);}
+    .hero-glow-2{width:700px;height:700px;background:radial-gradient(circle,rgba(192,132,252,.09) 0%,transparent 65%);top:20%;right:-10%;}
+    .hero-glow-3{width:600px;height:600px;background:radial-gradient(circle,rgba(0,238,255,.08) 0%,transparent 65%);bottom:5%;left:5%;}
     .hero-eye{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--cyan);margin-bottom:1.5rem;opacity:0;animation:fadeUp .8s .2s forwards;}
     .hero h1{font-family:var(--font-head);font-size:clamp(3rem,6.5vw,6rem);font-weight:800;line-height:1;letter-spacing:-.03em;max-width:14ch;opacity:0;animation:fadeUp .8s .4s forwards;}
     .hero h1 em{font-family:var(--font-serif);font-style:italic;font-weight:300;background:linear-gradient(120deg,var(--green),var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200% 200%;animation:shimmer 4s ease infinite;}
@@ -80,7 +80,7 @@
     .stats{display:grid;grid-template-columns:repeat(4,1fr);background:var(--surface);border-top:1px solid rgba(56,189,248,.12);border-bottom:1px solid rgba(56,189,248,.12);}
     .stat{padding:2rem 2.5rem;border-right:1px solid rgba(56,189,248,.1);}
     .stat:last-child{border-right:none;}
-    .stat-n{font-family:var(--font-head);font-size:2.2rem;font-weight:800;background:linear-gradient(90deg,var(--green),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;}
+    .stat-n{font-family:var(--font-head);font-size:2.4rem;font-weight:800;background:linear-gradient(90deg,var(--green),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;text-shadow:0 0 30px rgba(0,255,153,.3);}
     .stat-l{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:.4rem;}
 
     /* SOLUTIONS */
@@ -277,36 +277,38 @@
 
     /* DASHBOARDS */
     .dash-wrapper{background:var(--surface);border:1px solid var(--border);border-radius:6px;overflow:hidden;}
-    .dash-header{padding:1.2rem 1.5rem;border-bottom:1px solid var(--border);background:var(--surface2);}
-    .dash-title-row{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.8rem;}
+    .dash-header{padding:.9rem 1.2rem;border-bottom:1px solid var(--border);background:var(--surface2);}
+    .dash-title-row{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;}
     .kpi-strip{display:grid;grid-template-columns:repeat(6,1fr);border-bottom:1px solid var(--border);}
-    .kpi-card{padding:1rem 1.2rem;border-right:1px solid var(--border);position:relative;}
+    .kpi-card{padding:.7rem .9rem;border-right:1px solid var(--border);position:relative;}
     .kpi-card:last-child{border-right:none;}
     .kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
     .kpi-green::before{background:var(--green);} .kpi-blue::before{background:var(--blue);}
     .kpi-purple::before{background:var(--purple);} .kpi-gold::before{background:var(--gold);}
     .kpi-orange::before{background:var(--orange);} .kpi-cyan::before{background:var(--cyan);}
     .kpi-red::before{background:var(--red);}
-    .kpi-label{font-size:.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.3rem;}
-    .kpi-val{font-family:var(--font-head);font-size:1.3rem;font-weight:800;color:var(--text);line-height:1;}
-    .kpi-delta{font-size:.6rem;margin-top:.25rem;}
+    .kpi-label{font-size:.55rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.2rem;}
+    .kpi-val{font-family:var(--font-head);font-size:1.05rem;font-weight:800;color:var(--text);line-height:1;}
+    .kpi-delta{font-size:.55rem;margin-top:.2rem;}
     .kpi-up{color:var(--green);} .kpi-down{color:var(--orange);}
-    .dash-charts{display:flex;gap:0;border-bottom:1px solid var(--border);}
-    .dash-chart-card{padding:1rem 1.2rem;border-right:1px solid var(--border);min-width:0;}
+    .dash-charts{display:grid;grid-template-columns:2fr 1.2fr 1.2fr;border-bottom:1px solid var(--border);gap:0;}
+    .dash-chart-card{padding:.8rem 1rem;border-right:1px solid var(--border);min-width:0;overflow:hidden;}
     .dash-chart-card:last-child{border-right:none;}
-    .dcc-label{font-size:.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.6rem;}
+    .dcc-label{font-size:.55rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;}
+    .dash-chart-card canvas{display:block;max-height:80px;width:100%!important;}
     .layer-status-grid{display:grid;grid-template-columns:repeat(6,1fr);}
-    .ls-card{padding:.8rem 1rem;border-right:1px solid var(--border);display:flex;flex-direction:column;gap:.25rem;position:relative;}
+    .ls-card{padding:.6rem .8rem;border-right:1px solid var(--border);display:flex;flex-direction:column;gap:.2rem;position:relative;}
     .ls-card:last-child{border-right:none;}
     .ls-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;opacity:.4;}
     .ls-green::before{background:var(--green);} .ls-blue::before{background:var(--blue);}
     .ls-purple::before{background:var(--purple);} .ls-gold::before{background:var(--gold);}
     .ls-orange::before{background:var(--orange);} .ls-cyan::before{background:var(--cyan);}
     .ls-red::before{background:var(--red);}
-    .ls-icon{font-size:.9rem;}
-    .ls-name{font-size:.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
-    .ls-val{font-size:.65rem;color:var(--text);}
-    @media(max-width:1100px){.kpi-strip{grid-template-columns:repeat(3,1fr);}.layer-status-grid{grid-template-columns:repeat(3,1fr);}.dash-charts{flex-wrap:wrap;}.kpi-card:nth-child(3){border-right:none;}.kpi-card:nth-child(4){border-top:1px solid var(--border);}}
+    .ls-icon{font-size:.8rem;}
+    .ls-name{font-size:.55rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;}
+    .ls-val{font-size:.6rem;color:var(--text);}
+    @media(max-width:1100px){.kpi-strip{grid-template-columns:repeat(3,1fr);}.layer-status-grid{grid-template-columns:repeat(3,1fr);}.dash-charts{grid-template-columns:1fr 1fr;}.dash-chart-card:nth-child(3){border-top:1px solid var(--border);grid-column:span 2;}.kpi-card:nth-child(3){border-right:none;}.kpi-card:nth-child(4){border-top:1px solid var(--border);}}
+    @media(max-width:700px){.kpi-strip{grid-template-columns:repeat(2,1fr);}.layer-status-grid{grid-template-columns:repeat(2,1fr);}.dash-charts{grid-template-columns:1fr;}}
     @media(max-width:700px){.kpi-strip{grid-template-columns:repeat(2,1fr);}.layer-status-grid{grid-template-columns:repeat(2,1fr);}}
 
   </style>
@@ -321,17 +323,35 @@
 <nav>
   <div class="nav-logo">Ablny<span> Technologies AS</span></div>
   <ul class="nav-links">
-    <li><a href="#solutions">Solutions</a></li>
-    <li><a href="#platform">Platform</a></li>
-    <li><a href="#layers">Architecture</a></li>
-    <li><a href="#founder">Founder</a></li>
+    <li><a href="#solutions">Løsninger</a></li>
+    <li><a href="#platform">Plattform</a></li>
+    <li><a href="#layers">Arkitektur</a></li>
+    <li><a href="#investors" style="color:var(--gold);">Investorer</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#founder">Grunnlegger</a></li>
     <li><a href="#collab">UiS</a></li>
     <li><a href="#euaiact" style="color:var(--purple);">EU AI Act</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact">Kontakt</a></li>
     <li><a href="#solutions" onclick="setTimeout(()=>{showSol('s4',document.querySelectorAll('.sol-tab')[3])},100)" style="color:var(--green);">Live Demos</a></li>
   </ul>
-  <a href="#contact" class="nav-cta">Get in Touch</a>
+  <a href="#contact" class="nav-cta">Ta Kontakt</a>
 </nav>
+
+<!-- NORWAY LAUNCH BANNER -->
+<div style="background:linear-gradient(90deg,rgba(0,255,153,.12),rgba(0,238,255,.1),rgba(192,132,252,.1));border-bottom:1px solid rgba(0,255,153,.25);padding:.7rem 3rem;display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap;font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;">
+  <div style="display:flex;align-items:center;gap:.6rem;color:var(--green);font-weight:700;">
+    <span style="font-size:1rem;">🇳🇴</span>
+    Offisielt lansert i Norge — Oktober 2025
+  </div>
+  <div style="color:var(--muted);">Org nr <strong style="color:var(--text);">936 326 609</strong></div>
+  <div style="color:var(--muted);">Kampensgata 34, 4024 <strong style="color:var(--text);">Stavanger</strong></div>
+  <div style="color:var(--muted);">Aksjekapital: <strong style="color:var(--gold);">NOK 30 000</strong></div>
+  <div style="color:var(--muted);">Bransje: <strong style="color:var(--cyan);">NACE 62.200</strong></div>
+  <div style="display:flex;align-items:center;gap:.4rem;color:var(--green);">
+    <span style="width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 1.4s infinite;display:inline-block;"></span>
+    Aktivt foretak
+  </div>
+</div>
 
 <!-- SECURITY TRUST BAR -->
 <div class="trust-bar" role="complementary" aria-label="Security and compliance certifications">
@@ -349,9 +369,12 @@
   <div class="hero-glow hero-glow-1"></div>
   <div class="hero-glow hero-glow-2"></div>
   <div class="hero-glow hero-glow-3"></div>
-  <div class="hero-eye">Ablny Technologies AS · Norway · AI &amp; Digital Solutions · Est. 2024</div>
-  <h1>Energy.<br/><em>Reimagined</em><br/>for a Net-Zero<br/>Future.</h1>
-  <p class="hero-desc">Three integrated platforms — AI-enabled green energy &amp; bioprocess digital twins, sovereign zero trust cloud on OCI, and carbon market intelligence — architected for Norway's net-zero transition and built to scale globally.</p>
+  <div class="hero-eye">Ablny Technologies AS · Stavanger, Norge · AI &amp; Digitale Løsninger · Org nr 936 326 609</div>
+  <h1>Energi.<br/><em>Transformert</em><br/>for en<br/>Netto-Null Fremtid.</h1>
+  <p class="hero-desc">Tre integrerte plattformer — AI-drevne grønn energi &amp; bioprocess digitale tvillinger, sovereign zero trust sky på OCI, og karbonmarkedsintelligens — bygget for Norges netto-null-omstilling og skalert globalt. <span style="color:var(--green);">Nå offisielt operativt i Norge.</span></p>
+  <div style="margin-top:1.4rem;padding:.9rem 1.4rem;background:rgba(0,255,153,.07);border:1px solid rgba(0,255,153,.2);border-radius:4px;max-width:62ch;font-size:.72rem;color:var(--muted);line-height:1.8;opacity:0;animation:fadeUp .8s .55s forwards;">
+    <span style="color:var(--green);font-weight:700;">🇳🇴 Vedtektsfestet formål:</span> Å levere IT-løsninger, datasystemer, sky- og AI-baserte tjenester, samt rådgivning for bedrifter innen EPCIC, CCUS og grønn energi.
+  </div>
   <div class="chips">
     <span class="chip g">Digital Twins</span><span class="chip g">Carbon Markets</span><span class="chip g">AI Optimization</span>
     <span class="chip b">Sovereign Cloud · OCI</span><span class="chip b">Zero Trust Security</span><span class="chip b">EPCIC</span>
@@ -366,18 +389,118 @@
 </section>
 
 <div class="stats" role="region" aria-label="Platform statistics">
-  <div class="stat"><div class="stat-n">3</div><div class="stat-l">Flagship Platforms</div></div>
-  <div class="stat"><div class="stat-n">25+</div><div class="stat-l">Years Delivery</div></div>
-  <div class="stat"><div class="stat-n">6+</div><div class="stat-l">EU H2020 Projects</div></div>
-  <div class="stat"><div class="stat-n">∞</div><div class="stat-l">Closed-Loop AI</div></div>
+  <div class="stat"><div class="stat-n">3</div><div class="stat-l">Flagship-plattformer</div></div>
+  <div class="stat"><div class="stat-n">25+</div><div class="stat-l">Års leveranse</div></div>
+  <div class="stat"><div class="stat-n">6+</div><div class="stat-l">EU H2020-prosjekter</div></div>
+  <div class="stat"><div class="stat-n">∞</div><div class="stat-l">Lukket AI-sløyfe</div></div>
 </div>
+
+<!-- INVESTOR SECTION -->
+<section id="investors" style="padding:6rem 3rem;background:var(--surface);border-top:1px solid rgba(255,215,0,.15);">
+  <div style="position:relative;overflow:hidden;">
+    <div style="position:absolute;top:-150px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(255,215,0,.06) 0%,transparent 70%);pointer-events:none;"></div>
+    <div class="sl" style="color:var(--gold);">Investormuligheter · Investor Opportunities</div>
+    <h2 class="st">Søker Strategiske<br/>Partnere &amp; Investorer</h2>
+    <p style="color:var(--muted);font-size:.8rem;line-height:1.9;margin-top:1rem;max-width:62ch;">Ablny Technologies AS er nå offisielt etablert i Norge og søker aktivt strategiske investorer, offentlig støtte og FoU-samarbeid. Vi inviterer Innovation Norway, Valide, EU Horizon og konsulentpartnere til å bli med på å forme Norges digitale og grønne fremtid.</p>
+
+    <!-- 3-col investor target grid -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:3rem 0;">
+
+      <!-- Innovation Norway -->
+      <div style="background:var(--bg);border:1px solid rgba(255,215,0,.25);border-radius:6px;padding:2rem;position:relative;overflow:hidden;transition:border-color .3s;" onmouseover="this.style.borderColor='rgba(255,215,0,.5)'" onmouseout="this.style.borderColor='rgba(255,215,0,.25)'">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent);"></div>
+        <div style="font-size:1.6rem;margin-bottom:.8rem;">🇳🇴</div>
+        <div style="font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;">Offentlig støtte · Public Funding</div>
+        <div style="font-family:var(--font-head);font-size:1.1rem;font-weight:700;margin-bottom:.8rem;color:var(--gold);">Innovation Norway</div>
+        <p style="font-size:.73rem;color:var(--muted);line-height:1.8;margin-bottom:1rem;">Ablny Technologies AS oppfyller kriteriene for Innovasjon Norges støtteprogrammer innen digitalisering, grønn teknologi og internasjonal vekst. Våre AI-plattformer for grønn energi, EPCIC og karbonmarkeder er direkte alignet med Norges grønne omstillingsstrategi.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:.4rem;">
+          <span style="font-size:.58rem;padding:.2rem .55rem;border:1px solid rgba(255,215,0,.25);border-radius:2px;color:var(--gold);">Grønn teknologi</span>
+          <span style="font-size:.58rem;padding:.2rem .55rem;border:1px solid rgba(255,215,0,.25);border-radius:2px;color:var(--gold);">Digitalisering</span>
+          <span style="font-size:.58rem;padding:.2rem .55rem;border:1px solid rgba(255,215,0,.25);border-radius:2px;color:var(--gold);">Internasjonal vekst</span>
+          <span style="font-size:.58rem;padding:.2rem .55rem;border:1px solid rgba(255,215,0,.25);border-radius:2px;color:var(--gold);">Eksportstøtte</span>
+        </div>
+      </div>
+
+      <!-- Valide -->
+      <div style="background:var(--bg);border:1px solid rgba(0,255,153,.25);border-radius:6px;padding:2rem;position:relative;overflow:hidden;transition:border-color .3s;" onmouseover="this.style.borderColor='rgba(0,255,153,.5)'" onmouseout="this.style.borderColor='rgba(0,255,153,.25)'">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),transparent);"></div>
+        <div style="font-size:1.6rem;margin-bottom:.8rem;">🚀</div>
+        <div style="font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--green);margin-bottom:.4rem;">Såkorn &amp; Vekstkapital · Seed &amp; Growth</div>
+        <div style="font-family:var(--font-head);font-size:1.1rem;font-weight:700;margin-bottom:.8rem;color:var(--green);">Valide (Validé)</div>
+        <p style="font-size:.73rem;color:var(--muted);line-height:1.8;margin-bottom:1rem;">Vi søker samarbeid med Valide for kommersiell validering og skalering av våre AI-energiplattformer i det norske og nordiske markedet. Vår teknologi er klar for kommersiell vekst — validert gjennom UiS-samarbeid og EU-prosjekter.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:.4rem;">
+          <span style="font-size:.58rem;padding:.2rem .55rem;border:1px solid rgba(0,255,153,.25);border-radius:2px;color:var(--green);">Kommersialisering</span>
+          <span style="font-size:.58rem;padding:.2rem .55rem;border:1px solid rgba(0,255,153,.25);border-radius:2px;color:var(--green);">Skalering</span>
+          <span style="font-size:.58rem;padding:.2rem .55rem;border:1px solid rgba(0,255,153,.25);border-radius:2px;color:var(--green);">Nordisk marked</span>
+          <span style="font-size:.58rem;padding:.2rem .55rem;border:1px solid rgba(0,255,153,.25);border-radius:2px;color:var(--green);">Vekstkapital</span>
+        </div>
+      </div>
+
+      <!-- EU Horizon -->
+      <div style="background:var(--bg);border:1px solid rgba(77,201,255,.25);border-radius:6px;padding:2rem;position:relative;overflow:hidden;transition:border-color .3s;" onmouseover="this.style.borderColor='rgba(77,201,255,.5)'" onmouseout="this.style.borderColor='rgba(77,201,255,.25)'">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),transparent);"></div>
+        <div style="font-size:1.6rem;margin-bottom:.8rem;">🇪🇺</div>
+        <div style="font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);margin-bottom:.4rem;">EU FoU · Research &amp; Innovation</div>
+        <div style="font-family:var(--font-head);font-size:1.1rem;font-weight:700;margin-bottom:.8rem;color:var(--blue);">EU Horizon Europe</div>
+        <p style="font-size:.73rem;color:var(--muted);line-height:1.8;margin-bottom:1rem;">Med 6+ EU H2020-prosjekter i porteføljen er Ablny Technologies AS en erfaren EU FoU-partner. Vi søker aktivt nye Horizon Europe-konsortier innen grønn energi, CCUS, digital tvilling og AI-transparens — særlig under Cluster 5 (Klima, Energi, Mobilitet).</p>
+        <div style="display:flex;flex-wrap:wrap;gap:.4rem;">
+          <span style="font-size:.58rem;padding:.2rem .55rem;border:1px solid rgba(77,201,255,.25);border-radius:2px;color:var(--blue);">Cluster 5 — Energy</span>
+          <span style="font-size:.58rem;padding:.2rem .55rem;border:1px solid rgba(77,201,255,.25);border-radius:2px;color:var(--blue);">CCUS</span>
+          <span style="font-size:.58rem;padding:.2rem .55rem;border:1px solid rgba(77,201,255,.25);border-radius:2px;color:var(--blue);">Digital Twins</span>
+          <span style="font-size:.58rem;padding:.2rem .55rem;border:1px solid rgba(77,201,255,.25);border-radius:2px;color:var(--blue);">AI Transparency</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Consultancy row -->
+    <div style="background:var(--bg);border:1px solid rgba(192,132,252,.2);border-radius:6px;padding:2rem;margin-bottom:2rem;">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:3rem;align-items:center;flex-wrap:wrap;">
+        <div>
+          <div style="font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--purple);margin-bottom:.6rem;">Konsulentsamarbeid · Consultancy</div>
+          <div style="font-family:var(--font-head);font-size:1.2rem;font-weight:700;margin-bottom:.6rem;">Open for Consultancy &amp; Partnerships</div>
+          <p style="font-size:.73rem;color:var(--muted);line-height:1.8;">Ablny Technologies AS tilbyr IT-rådgivning, løsningsarkitektur og leveranser innen EPCIC, CCUS, grønn energi og sky-transformasjon til norske og internasjonale aktører.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;">
+          <div style="padding:.9rem;background:var(--surface);border:1px solid var(--border);border-radius:4px;">
+            <div style="font-size:.65rem;color:var(--purple);margin-bottom:.3rem;font-weight:700;">⚡ Energi &amp; EPCIC</div>
+            <div style="font-size:.65rem;color:var(--muted);line-height:1.6;">Teknisk rådgivning, digitale løsninger og AI-implementering for olje, gass og fornybar energi.</div>
+          </div>
+          <div style="padding:.9rem;background:var(--surface);border:1px solid var(--border);border-radius:4px;">
+            <div style="font-size:.65rem;color:var(--cyan);margin-bottom:.3rem;font-weight:700;">☁ Sky &amp; Sikkerhet</div>
+            <div style="font-size:.65rem;color:var(--muted);line-height:1.6;">OCI Zero Trust-implementeringer, GDPR-compliance og sovereign cloud-arkitektur for norske virksomheter.</div>
+          </div>
+          <div style="padding:.9rem;background:var(--surface);border:1px solid var(--border);border-radius:4px;">
+            <div style="font-size:.65rem;color:var(--green);margin-bottom:.3rem;font-weight:700;">🌿 Grønn omstilling</div>
+            <div style="font-size:.65rem;color:var(--muted);line-height:1.6;">Carbon accounting, ESG-rapportering og AI-drevne dekarboniseringsstrategier.</div>
+          </div>
+          <div style="padding:.9rem;background:var(--surface);border:1px solid var(--border);border-radius:4px;">
+            <div style="font-size:.65rem;color:var(--gold);margin-bottom:.3rem;font-weight:700;">🤖 AI &amp; Digitale tvillinger</div>
+            <div style="font-size:.65rem;color:var(--muted);line-height:1.6;">Utvikling av digitale tvillinger, ML-optimalisering og GenAI-assistenter for industrien.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Investment CTA -->
+    <div style="background:linear-gradient(135deg,rgba(0,255,153,.06),rgba(0,238,255,.04),rgba(192,132,252,.05));border:1px solid rgba(0,255,153,.2);border-radius:6px;padding:2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem;">
+      <div>
+        <div style="font-family:var(--font-head);font-size:1.2rem;font-weight:700;margin-bottom:.5rem;">Klar for å investere i Norges grønne AI-fremtid?</div>
+        <p style="font-size:.75rem;color:var(--muted);max-width:52ch;line-height:1.8;">Vi er åpne for investor-dialog, FoU-samarbeid og strategiske partnerskap. Ta kontakt for presentasjon, pitch deck eller teknisk gjennomgang.</p>
+      </div>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <a href="/cdn-cgi/l/email-protection#1c75727a735c7d7e70726568797f74327f7371" class="btn btn-p">📩 Investor Dialog</a>
+        <a href="#contact" class="btn btn-g">Book Presentasjon</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- SOLUTIONS -->
 <section id="solutions" style="padding:6rem 3rem;">
   <div class="sol-intro">
-    <div class="sl">Our Platforms</div>
-    <h2 class="st">Three Solutions.<br/>One Vision.</h2>
-    <p>From AI-powered energy digital twins to sovereign cloud security and bioprocess intelligence — each platform is field-tested, research-validated, and built for regulated, mission-critical environments.</p>
+    <div class="sl">Våre plattformer · Our Platforms</div>
+    <h2 class="st">Tre Løsninger.<br/>Én Visjon.</h2>
+    <p>Fra AI-drevne digitale energitvillinger til sovereign cloud-sikkerhet og bioprocess-intelligens — hver plattform er felt-testet, forskning-validert og bygget for regulerte, missionskritiske miljøer.</p>
   </div>
 
   <div class="sol-tabs" role="tablist" aria-label="Platform solutions">
@@ -466,15 +589,16 @@
     <div class="dash-charts">
       <div class="dash-chart-card" style="flex:2;">
         <div class="dcc-label">Carbon Price Trend (EU ETS) — 24h · €/tCO₂</div>
-        <canvas id="c-carbon" height="90"></canvas>
+        <div style="height:80px;position:relative;"><canvas id="c-carbon"></canvas></div>
+        <span style="display:none"></canvas>
       </div>
       <div class="dash-chart-card" style="flex:1.2;">
         <div class="dcc-label">Yield vs Energy Efficiency · %</div>
-        <canvas id="c-yield" height="90"></canvas>
+        <div style="height:80px;position:relative;"><canvas id="c-yield"></canvas></div>
       </div>
       <div class="dash-chart-card" style="flex:1.2;">
         <div class="dcc-label">Scope 1–3 GHG Breakdown · g CO₂eq/MJ</div>
-        <canvas id="c-ghg" height="90"></canvas>
+        <div style="height:80px;position:relative;"><canvas id="c-ghg"></canvas></div>
       </div>
     </div>
     <!-- LAYER STATUS -->
@@ -570,15 +694,15 @@
     <div class="dash-charts">
       <div class="dash-chart-card" style="flex:2;">
         <div class="dcc-label">Threats Blocked per Hour — 24h rolling</div>
-        <canvas id="c-threats" height="90"></canvas>
+        <div style="height:80px;position:relative;"><canvas id="c-threats"></canvas></div>
       </div>
       <div class="dash-chart-card" style="flex:1.2;">
         <div class="dcc-label">6-Layer Health Status</div>
-        <canvas id="c-layers" height="90"></canvas>
+        <div style="height:80px;position:relative;"><canvas id="c-layers"></canvas></div>
       </div>
       <div class="dash-chart-card" style="flex:1.2;">
         <div class="dcc-label">Identity Verification Volume · 24h</div>
-        <canvas id="c-ids" height="90"></canvas>
+        <div style="height:80px;position:relative;"><canvas id="c-ids"></canvas></div>
       </div>
     </div>
     <!-- LAYER STATUS -->
@@ -674,15 +798,15 @@
     <div class="dash-charts">
       <div class="dash-chart-card" style="flex:2;">
         <div class="dcc-label">EUA Carbon Price — AI Forecast vs Market · €/tCO₂</div>
-        <canvas id="c-eua" height="90"></canvas>
+        <div style="height:80px;position:relative;"><canvas id="c-eua"></canvas></div>
       </div>
       <div class="dash-chart-card" style="flex:1.2;">
         <div class="dcc-label">Scope 1 / 2 / 3 GHG Breakdown</div>
-        <canvas id="c-scope" height="90"></canvas>
+        <div style="height:80px;position:relative;"><canvas id="c-scope"></canvas></div>
       </div>
       <div class="dash-chart-card" style="flex:1.2;">
         <div class="dcc-label">Research Pipeline — UiS Thesis Topics</div>
-        <canvas id="c-uis" height="90"></canvas>
+        <div style="height:80px;position:relative;"><canvas id="c-uis"></canvas></div>
       </div>
     </div>
     <!-- LAYER STATUS -->
@@ -763,7 +887,7 @@
     </div>
     <div class="callout" style="background:var(--green-dim);border:1px solid rgba(0,232,122,.2);margin-top:2rem;">
       <div class="callout-label" style="color:var(--green);">✦ Interactive Demonstrations · Deploy Anywhere</div>
-      All animations are standalone HTML files — embed as iframes, link as full-screen demos, or present in client meetings. Each has scenario triggers, speed controls, and live event logs. Contact <strong>products@ablnytech.com</strong> to discuss platform integration.
+      All animations are standalone HTML files — embed as iframes, link as full-screen demos, or present in client meetings. Each has scenario triggers, speed controls, and live event logs. Contact <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0f7f7d606b7a6c7b7c4f6e6d6361767b6a6c67216c6062">[email&#160;protected]</a></strong> to discuss platform integration.
     </div>
   </div>
 
@@ -773,7 +897,7 @@
 <section id="platform" style="padding:6rem 3rem;background:var(--surface);border-top:1px solid var(--border);">
   <div class="ph">
     <div><div class="sl">Core Architecture · v3.0</div><h2 class="st">AI-Enabled Integrated<br/>Energy Platform</h2></div>
-    <div class="pm">Ablny Technologies AS × University of Stavanger<br/>Author: John O. (Femi) Abe — CEO, Founder &amp; CTO<br/>Version 3.0 — Norway Scaling</div>
+    <div class="pm">Ablny Technologies AS × Universitetet i Stavanger<br/>Forfatter: John O. (Femi) Abe — CEO, Grunnlegger &amp; CTO<br/>Versjon 3.0 — Norge-skalering</div>
   </div>
   <div class="leg">
     <div class="li"><div class="ld" style="background:#4A90E2"></div>Strategy &amp; Economics</div>
@@ -861,8 +985,8 @@
 
 <!-- LAYERS -->
 <section id="layers" style="padding:6rem 3rem;">
-  <div class="sl">Nine-Layer Architecture</div>
-  <h2 class="st">Platform Components<br/>&amp; Capabilities</h2>
+  <div class="sl">Ni-lags arkitektur · Nine-Layer Architecture</div>
+  <h2 class="st">Plattformkomponenter<br/>&amp; Kapabiliteter</h2>
   <div class="lgrid">
     <div class="lc l1"><div class="lnum">Layer 01</div><div class="ltitle" style="color:#4A90E2">Strategy & Economics</div><div class="nd"><div class="nt">Investors & Business Owners</div><div class="ntags"><span class="tg">ROI/IRR</span><span class="tg">Carbon Asset Monetization</span><span class="tg">ESG KPIs</span></div></div><div class="nd"><div class="nt">Techno-Economic Model</div><div class="ntags"><span class="tg">Scenario Simulation</span><span class="tg">AI Forecasting</span><span class="tg">Energy Flex</span></div></div></div>
     <div class="lc l2"><div class="lnum">Layer 02</div><div class="ltitle" style="color:#00e87a">AI & Digital Twin</div><div class="nd"><div class="nt">ML Optimization Engine</div><div class="ntags"><span class="tg">Yield Prediction</span><span class="tg">RL Control</span><span class="tg">Drift Monitoring</span></div></div><div class="nd"><div class="nt">Cloud Digital Twin</div><div class="ntags"><span class="tg">What-If</span><span class="tg">Multi-Agent</span><span class="tg">Simulation</span></div></div><div class="nd"><div class="nt">GenAI Operations Assistant</div><div class="ntags"><span class="tg">NL Queries</span><span class="tg">RAG Patents</span></div></div></div>
@@ -878,22 +1002,23 @@
 
 <!-- FOUNDER -->
 <section id="founder" style="padding:6rem 3rem;background:var(--surface);border-top:1px solid var(--border);">
-  <div class="sl">Leadership</div>
-  <h2 class="st">Founder, CEO & CTO</h2>
+  <div class="sl">Ledelse · Leadership</div>
+  <h2 class="st">Grunnlegger, CEO &amp; CTO</h2>
   <div class="fi">
     <div class="fc">
       <div class="fn">John 'Femi Abe</div>
-      <div class="ft">CEO · Founder · CTO — Ablny Technologies AS</div>
+      <div class="ft">CEO · Grunnlegger · CTO — Ablny Technologies AS</div>
       <div class="froles">
-        <span class="rb">Technology Architect</span><span class="rb">ERP & Digital Platforms</span><span class="rb">AI/ML Solutions</span>
-        <span class="rb">Energy Systems</span><span class="rb">EPCIC</span><span class="rb">Sovereign Cloud</span><span class="rb">EU H2020 Veteran</span>
+        <span class="rb">Teknologiarkitekt</span><span class="rb">ERP &amp; Digitale plattformer</span><span class="rb">AI/ML-løsninger</span>
+        <span class="rb">Energisystemer</span><span class="rb">EPCIC</span><span class="rb">Sovereign Cloud</span><span class="rb">EU H2020-veteran</span>
       </div>
-      <p class="fbio">A globally experienced Technology and Solution Architect with over two decades of delivery across energy, fintech, telecom, government, health, and smart city domains — across West Africa, Turkey, EMEA, and Norway.</p>
-      <p class="fbio" style="margin-top:1rem;">At Ablny Technologies AS, he architects the intersection of AI, green energy, bioprocess engineering, sovereign OCI cloud security, and carbon market intelligence — drawing on deep expertise in federated learning, digital twins, NLP, and GPU-accelerated HPC infrastructure.</p>
+      <p class="fbio">En globalt erfaren teknologi- og løsningsarkitekt med over to tiår med leveranser innen energi, fintech, telekommunikasjon, offentlig sektor, helse og smarte byer — på tvers av Vest-Afrika, Tyrkia, EMEA og Norge.</p>
+      <p class="fbio" style="margin-top:.7rem;">Hos Ablny Technologies AS arkitekterer han skjæringspunktet mellom AI, grønn energi, bioprocess-engineering, sovereign OCI cloud-sikkerhet og karbonmarkedsintelligens.</p>
+      <p class="fbio" style="margin-top:.7rem;padding:.7rem;background:rgba(0,255,153,.05);border:1px solid rgba(0,255,153,.15);border-radius:3px;"><span style="color:var(--green);">🌍 Global arv:</span> Registrert i Nigeria i en lengre periode og nå offisielt etablert i Norge — bringer internasjonal erfaring fra 4 kontinenter til norsk og europeisk markedet.</p>
       <div class="fstats">
-        <div class="fs"><div class="fsn">20+</div><div class="fsl">Years Delivery</div></div>
+        <div class="fs"><div class="fsn">20+</div><div class="fsl">Års leveranse</div></div>
         <div class="fs"><div class="fsn">6+</div><div class="fsl">EU H2020</div></div>
-        <div class="fs"><div class="fsn">4</div><div class="fsl">Continents</div></div>
+        <div class="fs"><div class="fsn">4</div><div class="fsl">Kontinenter</div></div>
       </div>
     </div>
     <div>
@@ -922,18 +1047,150 @@
   <div class="pi"><div><div class="pd">Early Career</div><div class="po">Hewlett Packard · Nigeria</div></div><div><div class="pn">First West African Online Banking Deployment – First Bank of Nigeria (Finacle)</div><div class="pdesc">Lead Network Architect for First Bank of Nigeria's Finacle rollout — first 100% Oracle-based online banking infrastructure for a major Nigerian institution across 20+ branches in South-West Nigeria.</div><div class="ptags"><span class="tg">Oracle</span><span class="tg">Finacle</span><span class="tg">Network Architecture</span><span class="tg">Digital Banking</span></div><div class="pout">✦ Nigeria's first large-scale Oracle online banking infrastructure — digital financial services across 20+ branches.</div></div></div>
 </section>
 
+<!-- TEAM SECTION -->
+<section id="team" style="padding:6rem 3rem;background:var(--bg);border-top:1px solid var(--border);">
+  <div style="position:relative;">
+    <div style="position:absolute;top:-100px;left:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(77,201,255,.05) 0%,transparent 70%);pointer-events:none;"></div>
+
+    <div class="sl" style="color:var(--cyan);">Teamet vårt · Our Team</div>
+    <h2 class="st">Kompetanse.<br/>Globalt Nettverk.</h2>
+    <p style="color:var(--muted);font-size:.8rem;line-height:1.9;margin-top:.8rem;max-width:62ch;">Ablny Technologies AS opererer med et spesialisert in-house team og et internasjonalt nettverk av eksperter. Vår teknologi og metodikk er proprietær og beskyttet — vi deler kapabiliteter, ikke kildekode.</p>
+
+    <!-- IP notice bar -->
+    <div style="margin:2rem 0;padding:1rem 1.5rem;background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.2);border-radius:4px;display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;">
+      <div style="font-size:1.2rem;">🔐</div>
+      <div>
+        <div style="font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--purple);margin-bottom:.2rem;">Intellectual Property Protection</div>
+        <div style="font-size:.72rem;color:var(--muted);line-height:1.7;">All platform architectures, algorithms, digital twin models, carbon pricing engines, and process methodologies are proprietary to Ablny Technologies AS. Shared outputs are for demonstration purposes only — full IP remains with the company. Registered in Norway · Org nr 936 326 609.</div>
+      </div>
+    </div>
+
+    <!-- Team grid -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;">
+
+      <!-- In-house consultants -->
+      <div style="grid-column:span 2;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:2rem;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),var(--cyan),transparent);"></div>
+        <div style="font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;">In-House · Internt team</div>
+        <div style="font-family:var(--font-head);font-size:1.05rem;font-weight:700;margin-bottom:1.2rem;">7 Konsulenter · In-House Consultants</div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;">
+          <div style="padding:.9rem;background:var(--bg);border:1px solid var(--border);border-radius:4px;">
+            <div style="font-size:.6rem;color:var(--green);margin-bottom:.3rem;font-weight:600;">⚡ Energi &amp; EPCIC</div>
+            <div style="font-size:.65rem;color:var(--muted);line-height:1.6;">AI energy systems, digital twin engineering, SCADA/IoT integration og industriell automatisering.</div>
+          </div>
+          <div style="padding:.9rem;background:var(--bg);border:1px solid var(--border);border-radius:4px;">
+            <div style="font-size:.6rem;color:var(--cyan);margin-bottom:.3rem;font-weight:600;">☁ Sky &amp; Sikkerhet</div>
+            <div style="font-size:.65rem;color:var(--muted);line-height:1.6;">OCI Zero Trust, FIPS-kryptografi, Kubernetes-sikkerhet og samsvarskontroll (GDPR/NIS2).</div>
+          </div>
+          <div style="padding:.9rem;background:var(--bg);border:1px solid var(--border);border-radius:4px;">
+            <div style="font-size:.6rem;color:var(--purple);margin-bottom:.3rem;font-weight:600;">🤖 AI &amp; ML Engineering</div>
+            <div style="font-size:.65rem;color:var(--muted);line-height:1.6;">PyTorch/XGBoost modellering, reinforcement learning, NLP og GenAI RAG-implementasjoner.</div>
+          </div>
+          <div style="padding:.9rem;background:var(--bg);border:1px solid var(--border);border-radius:4px;">
+            <div style="font-size:.6rem;color:var(--gold);margin-bottom:.3rem;font-weight:600;">🌿 Carbon &amp; ESG</div>
+            <div style="font-size:.65rem;color:var(--muted);line-height:1.6;">Karbonregnskap, EU ETS-integrasjon, LCA-motorer og ESG-rapportering for industri og finans.</div>
+          </div>
+          <div style="padding:.9rem;background:var(--bg);border:1px solid var(--border);border-radius:4px;">
+            <div style="font-size:.6rem;color:var(--orange);margin-bottom:.3rem;font-weight:600;">🏭 Bioprocess &amp; R&amp;D</div>
+            <div style="font-size:.65rem;color:var(--muted);line-height:1.6;">Bioprocess modellering, fermentasjonssystemer, laboratorieinformasjonssystemer og IP-capture.</div>
+          </div>
+          <div style="padding:.9rem;background:var(--bg);border:1px solid var(--border);border-radius:4px;">
+            <div style="font-size:.6rem;color:var(--blue);margin-bottom:.3rem;font-weight:600;">💼 ERP &amp; Platform Delivery</div>
+            <div style="font-size:.65rem;color:var(--muted);line-height:1.6;">Enterprise solution delivery, fintech-arkitektur og digitale transformasjonsprosjekter.</div>
+          </div>
+          <div style="padding:.9rem;background:var(--bg);border:1px solid var(--border);border-radius:4px;grid-column:span 2;">
+            <div style="font-size:.6rem;color:var(--sky);margin-bottom:.3rem;font-weight:600;">📊 Data &amp; Analytics Engineering</div>
+            <div style="font-size:.65rem;color:var(--muted);line-height:1.6;">Real-time data pipelines, Kafka CDC, DSE/Cassandra, dashboards, og produksjonsklar BI-infrastruktur.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Technical advisors + partners column -->
+      <div style="display:flex;flex-direction:column;gap:1.5rem;">
+
+        <!-- Technical advisors -->
+        <div style="background:var(--surface);border:1px solid rgba(192,132,252,.25);border-radius:6px;padding:1.6rem;position:relative;overflow:hidden;flex:1;">
+          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--purple),transparent);"></div>
+          <div style="font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--purple);margin-bottom:.5rem;">Tekniske rådgivere</div>
+          <div style="font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:.8rem;">2 Technical Advisors</div>
+          <div style="display:flex;flex-direction:column;gap:.6rem;">
+            <div style="padding:.8rem;background:var(--bg);border:1px solid var(--border);border-radius:4px;">
+              <div style="font-size:.6rem;color:var(--purple);margin-bottom:.25rem;font-weight:600;">🧠 AI Architecture &amp; Research</div>
+              <div style="font-size:.63rem;color:var(--muted);line-height:1.6;">Senior technical oversight on AI system design, platform architecture review, and academic research alignment with UiS and EU Horizon.</div>
+            </div>
+            <div style="padding:.8rem;background:var(--bg);border:1px solid var(--border);border-radius:4px;">
+              <div style="font-size:.6rem;color:var(--cyan);margin-bottom:.25rem;font-weight:600;">⚙ Energy &amp; CCUS Systems</div>
+              <div style="font-size:.63rem;color:var(--muted);line-height:1.6;">Domain advisory on CCUS engineering, energy infrastructure, and regulatory compliance for Norwegian and EU markets.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- International partners -->
+        <div style="background:var(--surface);border:1px solid rgba(77,201,255,.2);border-radius:6px;padding:1.6rem;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--cyan),transparent);"></div>
+          <div style="font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);margin-bottom:.5rem;">Internasjonale partnere</div>
+          <div style="font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:.8rem;">Global Partner Network</div>
+          <div style="display:flex;flex-direction:column;gap:.6rem;">
+            <div style="padding:.8rem;background:var(--bg);border:1px solid var(--border);border-radius:4px;display:flex;align-items:flex-start;gap:.8rem;">
+              <span style="font-size:1.1rem;">🇬🇧</span>
+              <div>
+                <div style="font-size:.62rem;color:var(--text);font-weight:600;margin-bottom:.2rem;">United Kingdom</div>
+                <div style="font-size:.6rem;color:var(--muted);line-height:1.5;">Technology delivery, cloud architecture consulting, and enterprise solution partnerships across the UK market.</div>
+              </div>
+            </div>
+            <div style="padding:.8rem;background:var(--bg);border:1px solid var(--border);border-radius:4px;display:flex;align-items:flex-start;gap:.8rem;">
+              <span style="font-size:1.1rem;">🇳🇬</span>
+              <div>
+                <div style="font-size:.62rem;color:var(--text);font-weight:600;margin-bottom:.2rem;">Nigeria</div>
+                <div style="font-size:.6rem;color:var(--muted);line-height:1.5;">Long-standing operational base since initial registration. Fintech, energy sector, and digital transformation partnerships across West Africa.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Hiring note -->
+    <div style="margin-top:2rem;padding:1.2rem 1.8rem;background:rgba(0,255,153,.05);border:1px solid rgba(0,255,153,.15);border-radius:4px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+      <div>
+        <div style="font-size:.62rem;color:var(--green);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.25rem;">Voksende team · Growing Team</div>
+        <div style="font-size:.73rem;color:var(--muted);">Vi er åpne for dyktige fagfolk innen AI, energi, CCUS og sky-arkitektur. Ta kontakt for samarbeidsmuligheter.</div>
+      </div>
+      <a href="mailto:info@ablnytech.com" class="btn btn-g" style="white-space:nowrap;">Bli en del av teamet</a>
+    </div>
+  </div>
+</section>
+
 <!-- COLLAB -->
 <section id="collab" style="padding:5rem 3rem;background:var(--bg);border-top:1px solid var(--border);">
   <div class="ci">
     <div class="ct">
-      <div class="sl">Strategic Academic Partnership</div>
-      <h2 class="st" style="font-size:1.9rem;">Industry × Academia<br/>Closed-Loop Innovation</h2>
-      <p style="color:var(--muted);margin-top:1rem;max-width:48ch;font-size:.78rem;line-height:1.9;">A unique research-to-market pipeline connecting Ablny Technologies AS with the University of Stavanger. Platform architecture, digital twin outputs, carbon pricing models, and production dashboards are actively shared with UiS faculty — supporting MSc/PhD research through Fall 2026 thesis intake on carbon economics, AI pricing, and energy market modelling.</p>
+      <div class="sl">Strategisk akademisk partnerskap · EU Horizon-samarbeid</div>
+      <h2 class="st" style="font-size:1.9rem;">Industri × Akademia<br/>× EU Horizon</h2>
+      <p style="color:var(--muted);margin-top:1rem;max-width:48ch;font-size:.78rem;line-height:1.9;">En unik forsknings-til-marked-pipeline som kobler Ablny Technologies AS med Universitetet i Stavanger og EU Horizon Europe. Plattformarkitektur, digitale tvillingresultater, karbonprismodeller og produksjonsdashbord deles aktivt med UiS-fagstaben — og støtter MSc/PhD-forskning med oppstart høsten 2026 innen karbonøkonomi, AI-prising og energimarkedsmodellering.</p>
+      <div style="margin-top:1.5rem;padding:1rem;background:rgba(0,255,153,.06);border:1px solid rgba(0,255,153,.2);border-radius:4px;font-size:.72rem;color:var(--muted);line-height:1.8;">
+        <span style="color:var(--green);font-weight:700;">🇪🇺 EU Horizon Europe:</span> Ablny Technologies AS er aktivt på utkikk etter Horizon Europe-konsortier under Cluster 5 (Klima, Energi, Mobilitet) og søker prosjekter innen CCUS, digitale tvillinger og AI-transparens.
+      </div>
     </div>
-    <div class="clogos">
-      <div class="lb"><div class="ln" style="color:var(--green);">ABLNY</div><div class="ls">Technologies AS · Norway</div></div>
-      <div style="font-size:2rem;color:var(--muted);">×</div>
-      <div class="lb"><div class="ln" style="color:#C8A2C8;">UiS</div><div class="ls">University of Stavanger</div></div>
+    <div style="display:flex;flex-direction:column;gap:1.5rem;">
+      <div class="clogos">
+        <div class="lb"><div class="ln" style="color:var(--green);">ABLNY</div><div class="ls">Technologies AS · Norge</div></div>
+        <div style="font-size:2rem;color:var(--muted);">×</div>
+        <div class="lb"><div class="ln" style="color:#C8A2C8;">UiS</div><div class="ls">Universitetet i Stavanger</div></div>
+        <div style="font-size:2rem;color:var(--muted);">×</div>
+        <div class="lb"><div class="ln" style="color:var(--blue);">🇪🇺 EU</div><div class="ls">Horizon Europe</div></div>
+      </div>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <div style="padding:.8rem 1.2rem;background:var(--surface);border:1px solid var(--border);border-radius:4px;font-size:.65rem;color:var(--muted);">
+          <div style="color:var(--gold);margin-bottom:.2rem;">✦ 6+ EU H2020-prosjekter levert</div>
+          URBAN GreenUP, REMOURBAN, Blockchain EHR og mer
+        </div>
+        <div style="padding:.8rem 1.2rem;background:var(--surface);border:1px solid var(--border);border-radius:4px;font-size:.65rem;color:var(--muted);">
+          <div style="color:var(--cyan);margin-bottom:.2rem;">✦ UiS MSc Thesis Pipeline</div>
+          7 forskningstemaer · Høst 2026 opptak
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -943,8 +1200,8 @@
   <div style="position:relative;z-index:1;">
     <div class="euai-header">
       <div class="euai-intro">
-        <div class="sl">Governance & Trust</div>
-        <h2 class="st">EU AI Act Compliant.<br/>Inherently Secure.</h2>
+        <div class="sl">Styring &amp; Tillit · Governance &amp; Trust</div>
+        <h2 class="st">EU AI Act Compliant.<br/>Inherently Secure.<br/><span style="font-size:.6em;color:var(--muted);">Bygget for regulerte miljøer.</span></h2>
         <p>Every platform we build is designed from first principles to meet the EU AI Act, GDPR, EU data sovereignty mandates, and Zero Trust security requirements. Security and compliance are not add-ons — they are embedded in the architecture, the supply chain, the runtime, and the audit trail.</p>
         <div class="euai-badge-row">
           <span class="euai-badge b-green">✓ EU AI Act — High-Risk Ready</span>
@@ -1106,36 +1363,65 @@
 
 <!-- CONTACT -->
 <section id="contact" style="padding:6rem 3rem;background:var(--surface);border-top:1px solid var(--border);">
-  <div class="sl">Get in Touch</div>
-  <h2 class="st">Let's Build the<br/>Energy Future Together</h2>
+  <div class="sl">Ta Kontakt · Get in Touch</div>
+  <h2 class="st">La oss bygge<br/>energifremtiden sammen.</h2>
   <div class="cgrid">
     <div class="cc">
-      <div class="ccl">Products &amp; Solutions</div>
+      <div class="ccl">Produkter &amp; Løsninger · Products &amp; Solutions</div>
       <div class="cct">Platform &amp; Product Enquiries</div>
-      <div class="ccd">Platform demos, partnership discussions, solution architecture consultations, commercial opportunities, and OCI/Zero Trust implementations.</div>
-      <a href="mailto:products@ablnytech.com" class="cemail"><span style="color:var(--green);">✉</span>products@ablnytech.com</a>
-      <div class="cinfo"><strong>Ablny Technologies AS</strong>Norway · ablnytech.com<br/>AI Energy · Sovereign Cloud · Bioprocess · Carbon Markets</div>
+      <div class="ccd">Plattform-demoer, partnerskap, løsningsarkitektur-konsultasjoner, kommersielle muligheter og OCI/Zero Trust-implementeringer.</div>
+      <a href="/cdn-cgi/l/email-protection#97e7e5f8f3e2f4e3e4d7f6f5fbf9eee3f2f4ffb9f4f8fa" class="cemail"><span style="color:var(--green);">✉</span><span class="__cf_email__" data-cfemail="e292908d8697819691a283808e8c9b9687818acc818d8f">[email&#160;protected]</span></a>
+      <a href="/cdn-cgi/l/email-protection#8ce5e2eae3ccedeee0e2f5f8e9efe4a2efe3e1" class="cemail"><span style="color:var(--cyan);">✉</span><span class="__cf_email__" data-cfemail="99f0f7fff6d9f8fbf5f7e0edfcfaf1b7faf6f4">[email&#160;protected]</span></a>
+      <div class="cinfo">
+        <strong>Ablny Technologies AS</strong>
+        Org nr: 936 326 609<br/>
+        Kampensgata 34, 4024 Stavanger, Norge<br/>
+        NACE 62.200 · Aksjeselskap · Registrert: 07.10.2025<br/>
+        Styrets leder: John Olorunfemi Abe
+      </div>
     </div>
     <div class="cc">
-      <div class="ccl">General &amp; Research</div>
-      <div class="cct">General &amp; Research Enquiries</div>
-      <div class="ccd">General information, media, academic research collaboration, investor relations, and UiS partnership enquiries.</div>
-      <a href="mailto:info@ablnytech.com" class="cemail"><span style="color:var(--green);">✉</span>info@ablnytech.com</a>
-      <div class="cinfo"><strong>John 'Femi Abe — CEO, Founder &amp; CTO</strong>Technology &amp; Solution Architect<br/>ERP &amp; Digital Platforms · AI-Enabled Solutions<br/>Energy, EPCIC &amp; Industrial Assets · +47 99882710</div>
+      <div class="ccl">Investorer &amp; Forskning · Investors &amp; Research</div>
+      <div class="cct">Investor Relations &amp; Research Collaboration</div>
+      <div class="ccd">Investor-dialog, medier, akademisk forskningssamarbeid (UiS/EU Horizon), Innovation Norway-søknader og Valide-partnerskap.</div>
+      <a href="tel:+4799882710" class="cemail"><span style="color:var(--green);">📞</span>+47 998 82 710</a>
+      <a href="/cdn-cgi/l/email-protection#1b72757d745b7a797775626f7e787335787476" class="cemail"><span style="color:var(--green);">✉</span><span class="__cf_email__" data-cfemail="bcd5d2dad3fcddded0d2c5c8d9dfd492dfd3d1">[email&#160;protected]</span></a>
+      <div class="cinfo">
+        <strong>John 'Femi Abe — CEO, Founder &amp; CTO</strong>
+        Teknologi- &amp; løsningsarkitekt<br/>
+        ERP &amp; Digitale plattformer · AI-drevne løsninger<br/>
+        Energi, EPCIC &amp; Industrielle eiendeler<br/>
+        c/o John O. ABE, Kampensgata 34, 4024 Stavanger
+      </div>
     </div>
+  </div>
+  <!-- Official company info box -->
+  <div style="margin-top:2rem;padding:1.5rem 2rem;background:var(--bg);border:1px solid rgba(0,255,153,.15);border-radius:6px;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;flex-wrap:wrap;">
+    <div><div style="font-size:.55rem;color:var(--green);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.3rem;">Juridisk navn</div><div style="font-size:.72rem;color:var(--text);">ABLNY TECHNOLOGIES AS</div></div>
+    <div><div style="font-size:.55rem;color:var(--green);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.3rem;">Org nr</div><div style="font-size:.72rem;color:var(--text);">936 326 609</div></div>
+    <div><div style="font-size:.55rem;color:var(--cyan);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.3rem;">Registrert</div><div style="font-size:.72rem;color:var(--text);">07.10.2025 · Brønnøysund</div></div>
+    <div><div style="font-size:.55rem;color:var(--cyan);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.3rem;">Stiftelsesdato</div><div style="font-size:.72rem;color:var(--text);">29.09.2025</div></div>
+    <div><div style="font-size:.55rem;color:var(--purple);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.3rem;">Selskapsform</div><div style="font-size:.72rem;color:var(--text);">Aksjeselskap (AS)</div></div>
+    <div><div style="font-size:.55rem;color:var(--purple);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.3rem;">Aksjekapital</div><div style="font-size:.72rem;color:var(--text);">NOK 30 000</div></div>
+    <div><div style="font-size:.55rem;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.3rem;">NACE-bransje</div><div style="font-size:.72rem;color:var(--text);">62.200 · IT-konsulentvirksomhet</div></div>
+    <div><div style="font-size:.55rem;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.3rem;">Status</div><div style="font-size:.72rem;color:var(--green);display:flex;align-items:center;gap:.4rem;"><span style="width:6px;height:6px;background:var(--green);border-radius:50%;display:inline-block;animation:pulse 1.4s infinite;"></span>Aktivt foretak</div></div>
   </div>
 </section>
 
 <footer>
-  <div>© 2025 <strong>Ablny Technologies AS</strong> · Norway · ablnytech.com</div>
+  <div>© 2025 <strong>Ablny Technologies AS</strong> · Org nr 936 326 609 · Stavanger, Norge</div>
   <div class="fl">
-    <a href="mailto:products@ablnytech.com">products@ablnytech.com</a>
-    <a href="mailto:info@ablnytech.com">info@ablnytech.com</a>
+    <a href="/cdn-cgi/l/email-protection#92e2e0fdf6e7f1e6e1d2f3f0fefcebe6f7f1fabcf1fdff"><span class="__cf_email__" data-cfemail="79090b161d0c1a0d0a39181b1517000d1c1a11571a1614">[email&#160;protected]</span></a>
+    <a href="/cdn-cgi/l/email-protection#adc4c3cbc2edcccfc1c3d4d9c8cec583cec2c0"><span class="__cf_email__" data-cfemail="6e070008012e0f0c0200171a0b0d06400d0103">[email&#160;protected]</span></a>
+    <a href="tel:+4799882710">+47 998 82 710</a>
   </div>
-  <div style="display:flex;align-items:center;gap:.6rem;"><span class="pulse" style="display:inline-block;width:6px;height:6px;background:var(--green);border-radius:50%;"></span>3 Platforms Active · v4.0 · EU AI Act Compliant</div>
+  <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:.6rem;"><span class="pulse" style="display:inline-block;width:6px;height:6px;background:var(--green);border-radius:50%;"></span>3 Plattformer Aktive · v4.0 · EU AI Act Compliant</div>
+    <div style="font-size:.58rem;color:var(--muted);">🇳🇴 Offisielt lansert i Norge · NACE 62.200 · Aktivt foretak</div>
+  </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ============================================================
    ABLNY TECHNOLOGIES AS — Main JS · v4.0
    - Zero duplicate functions
@@ -1220,14 +1506,15 @@ function randWalk(base, n, range) {
 function mkChart(id, type, labels, datasets, opts) {
   const canvas = document.getElementById(id);
   if (!canvas) return null;
+  canvas.style.maxHeight = '80px';
   return new Chart(canvas, {
     type, data: {labels, datasets},
     options: {
       responsive: true, maintainAspectRatio: false, animation: {duration: 600},
-      plugins: {legend: {display: datasets.length > 1, labels: {color:'#4a7aaa', font: {family:'IBM Plex Mono', size:9}, boxWidth:10, padding:8}}, tooltip: {backgroundColor:'#0a1628', borderColor:'#0f2540', borderWidth:1, titleColor:'#e2f4ff', bodyColor:'#4a7aaa', titleFont:{family:'Syne',size:11}}},
+      plugins: {legend: {display: datasets.length > 1, labels: {color:'#4a7aaa', font: {family:'IBM Plex Mono', size:8}, boxWidth:8, padding:6}}, tooltip: {backgroundColor:'#0a1628', borderColor:'#0f2540', borderWidth:1, titleColor:'#e2f4ff', bodyColor:'#4a7aaa', titleFont:{family:'Syne',size:10}}},
       scales: type !== 'doughnut' && type !== 'radar' ? {
-        x: {ticks: {color:'#4a7aaa', font:{family:'IBM Plex Mono', size:8}, maxRotation:0}, grid: {color:'rgba(15,37,64,.5)'}},
-        y: {ticks: {color:'#4a7aaa', font:{family:'IBM Plex Mono', size:8}}, grid: {color:'rgba(15,37,64,.5)'}}
+        x: {ticks: {color:'#4a7aaa', font:{family:'IBM Plex Mono', size:7}, maxRotation:0, maxTicksLimit:8}, grid: {color:'rgba(15,37,64,.4)'}},
+        y: {ticks: {color:'#4a7aaa', font:{family:'IBM Plex Mono', size:7}, maxTicksLimit:4}, grid: {color:'rgba(15,37,64,.4)'}}
       } : undefined,
       ...opts
     }
@@ -1332,27 +1619,4 @@ function initDashboards() {
   function tickCarb() {
     const price = (64 + (Math.random()-0.5)*3).toFixed(2);
     const offset = (67 + (Math.random()-0.5)*1).toFixed(1);
-    setKPI('carb-k1','€'+price); setKPI('carb-k6',offset+'%');
-    if(charts.eua) {
-      const ai = +(+price - 1.2 + Math.random()*0.6 - 0.3).toFixed(2);
-      charts.eua.data.datasets[0].data.push(+price);
-      charts.eua.data.datasets[0].data.shift();
-      charts.eua.data.datasets[1].data.push(ai);
-      charts.eua.data.datasets[1].data.shift();
-      charts.eua.update('none');
-    }
-    // Update carbon market layer status
-    setLS('ls-ets', 'EUA: €'+price+' · live');
-    setLS('ls-nord', 'Spot: '+(48 + (Math.random()-0.5)*4).toFixed(1)+' €/MWh');
-  }
-  function setKPI(id, val) { const el = document.getElementById(id); if(el) el.textContent = val; }
-  function setLS(id, val) { const el = document.getElementById(id); if(el) el.textContent = val; }
-
-  dashTimers.push(setInterval(tickBio,  2800));
-  dashTimers.push(setInterval(tickOCI, 3200));
-  dashTimers.push(setInterval(tickCarb, 3600));
-  dashTimers.push(setInterval(updateTS, 60000));
-}
-</script>
-</body>
-</html>
+    setKPI('carb-k1','€'+price); s
